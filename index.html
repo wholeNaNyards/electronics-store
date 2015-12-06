@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="electronicsStore">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		
+		<title>Products - Electronics Store</title>
+	
+		<!-- Bootstrap Minified CSS CDN -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" 
+		integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" 
+		crossorigin="anonymous" />
+		<!-- Bootstrap Optional Themes CSS CDN -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" 
+		integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous" />
+		<!-- AngularJS CDN -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="controllers/electronicsStore.js"></script>
+		<style>
+			.border { 
+				border: 1px solid #000000; 
+			}
+			
+			.border-square {
+				-webkit-border-radius: 0 !important;
+				-moz-border-radius: 0 !important;
+				border-radius: 0 !important;
+			}
+			
+			body {
+				background-color: #FFFFFF;
+			}
+			
+			.app-footer {
+				font-size: 20px;
+				padding-top: 12px;
+				padding-bottom: 12px;
+				color: #FFFFFF;
+				text-align: center;
+				text-shadow: 0 1px 0 rgba(0,0,0,.1);
+				background-color: #24537E;
+				background-image: -webkit-gradient(linear,left top,left bottom,from(#296091),to(#24537E));
+				background-image: -webkit-linear-gradient(top,#296091 0,#24537E 100%);
+				background-image: -o-linear-gradient(top,#296091 0,#24537E 100%);
+				background-image: linear-gradient(to bottom,#296091 0,#24537E 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#24537E', endColorstr='#24537E', GradientType=0);
+				background-repeat: repeat-x;
+			}
+			
+			/* custom Navbar Colors generated at http://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0 */
+			.navbar-custom {
+				background-color: #296091;
+				border-color: #24537E;
+			}
+			
+			.navbar-custom .navbar-brand {
+				color: #FFFFFF;
+			}
+			
+			.navbar-custom .navbar-brand:hover, .navbar-custom .navbar-brand:focus {
+				color: #dddddd;
+				background-color:transparent
+			}
+			
+			.navbar-custom .navbar-text {
+				color: #ffffff;
+			}
+
+			.navbar-custom .navbar-nav > li > a {
+				color: #ffffff;
+			}
+			
+			.navbar-custom .navbar-nav > li > a:hover, .navbar-custom .navbar-nav > li > a:focus {
+				color: #dddddd;
+				background-color: transparent;
+			}
+			
+			.navbar-custom .navbar-nav > .active > a, .navbar-custom .navbar-nav > .active > a:hover, .navbar-custom .navbar-nav > .active > a:focus {
+			  color: #ffffff;
+			  background-color: #24537E;
+			}
+			.navbar-custom .navbar-nav > .disabled > a, .navbar-custom .navbar-nav > .disabled > a:focus, .navbar-custom .navbar-nav > .disabled > a:hover {
+				color:#ccc;background-color:transparent
+			}
+	
+			.navbar-custom .navbar-toggle {
+			  border-color: #24537E;
+			}
+			.navbar-custom .navbar-toggle:hover, .navbar-custom .navbar-toggle:focus {
+			  background-color: #24537E;
+			}
+			.navbar-custom .navbar-toggle .icon-bar {
+			  background-color: #ffffff;
+			}
+			.navbar-custom .navbar-collapse,
+			.navbar-custom .navbar-form {
+			  border-color: #ffffff;
+			}
+
+			.navbar-custom .navbar-nav > .open > a, .navbar-custom .navbar-nav > .open > a:hover, .navbar-custom .navbar-nav > .open > a:focus {
+			  color: #dddddd;
+			  background-color: #24537E;
+			}
+			
+			@media (max-width: 767px) {
+			  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+				color: #ffffff;
+			  }
+			  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+				color: #dddddd;
+				background-color:transparent
+			  }
+			  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a, .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
+				color: #dddddd;
+				background-color: #24537E;
+			  }
+			  
+			  	.navbar-custom .navbar-nav .open .dropdown-menu>.disabled>a,.navbar-custom .navbar-nav .open .dropdown-menu>.disabled>a:focus,.navbar-custom .navbar-nav .open .dropdown-menu>.disabled>a:hover {
+					color:#ccc;background-color:transparent
+				}
+			}
+			
+			.navbar-custom .navbar-link {
+			  color: #ffffff;
+			}
+			.navbar-custom .navbar-link:hover {
+			  color: #dddddd;
+			}
+			
+			.navbar-custom .btn-link {
+				color:#777
+			}
+
+			.navbar-custom .btn-link:focus,.navbar-custom .btn-link:hover {
+				color:#333
+			}
+
+			.navbar-custom .btn-link[disabled]:focus,.navbar-custom .btn-link[disabled]:hover,fieldset[disabled] .navbar-custom .btn-link:focus,fieldset[disabled] .navbar-custom .btn-link:hover {
+				color:#ccc
+			}
+			.text-black {
+				color: #444444;
+			}
+			.text-black:hover {
+				color: #222222;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body ng-controller="electronicsStoreController">
+		<!-- Navigation -->
+		<nav class="navbar navbar-custom border-square" style="margin-bottom: 0px;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">
+						<span class="glyphicon glyphicon-tags"></span>
+						<span class="hidden-xs">&nbsp;Store</span>
+					</a>
+					<!-- Search Bar mobile -->
+					<div class="visible-xs" style="margin-top: 8px;">
+						<form class="form-group" style="margin-bottom: 0;" role="search">
+							<div class="input-group" style="padding-right: 15px;">
+								<input type="text" class="form-control" placeholder="Search..." name="srch-term" id="srch-term">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit">
+										<span class="glyphicon glyphicon-search text-muted"></span>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#">Home</a>
+						</li>
+						<li class="active">
+							<a href="#">Products <span class="sr-only">(current)</span></a>
+						</li>
+					</ul>
+					<!-- Search Bar Desktop -->
+					<div class="col-sm-6 col-md-7 col-lg-8 hidden-xs" style="margin-top: 8px; margin-left: 15px;">
+						<form class="form-group" style="margin-bottom: 0;" role="search">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for products..." name="srch-term" id="srch-term">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit">
+										<span class="glyphicon glyphicon-search text-muted"></span>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#">
+								Login
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid" style="margin-top: 15px;">
+			<div class="row">
+				<!-- Content Container -->
+				<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-9">
+					<div class="row">
+						<!-- Cart Mobile -->
+						<div class="col-xs-12 col-sm-3 visible-xs">
+							<button class="btn btn-success btn-block">
+								<span class="glyphicon glyphicon-shopping-cart"></span>
+								 Cart (15)
+							</button>
+							<br />
+						</div>
+						<div class="col-xs-12 col-sm-3 text-center">
+							<!-- Filter Mobile-->
+							<span class="visible-xs">
+									<a href="#collapseOne1" class="btn btn-warning btn-block border-square" data-toggle="collapse">
+										<strong>FILTER</strong>
+									</a>
+									<div id="collapseOne1" class="panel-collapse collapse">
+										<div class="btn-group-vertical btn-block">
+											<button type="button" class="btn border-square">
+												<strong>CATEGORY</strong>
+											</button>
+											<button type="button" class="btn border-square" ng-repeat="category in data.categories" href="#" ng-class="{'btn-primary': $first, 'text-bold': $first, 'text-black': !$first}">
+												{{ category.name }}
+											</button>
+										</div>
+										<hr style="border-color: #DDDDDD !important;" />
+										<h6 class="text-muted">
+											<strong>PRICE</strong>
+										</h6>
+											$$
+										<hr style="border-color: #DDDDDD !important;" />
+										<h6 class="text-muted">
+											<strong>RATING</strong>
+										</h6>
+											5 Stars
+										<br />
+										<br />
+									</div>
+							</span>
+							<!-- Filter Desktop -->
+							<span class="hidden-xs">
+								<br />
+								<br />
+								<div class="row">
+									<div class="col-sm-12" style="border-right: 1px solid #DDDDDD;">
+										<div class="row">
+											<div class="col-sm-12">
+												<h6>
+													<strong>CATEGORY</strong>
+												</h6>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-10 col-md-offset-1">
+												<span ng-repeat="category in data.categories">
+													<a href="#" ng-class="{'text-primary': $first, 'text-bold': $first, 'text-black': !$first}">
+														{{ category.name }}
+													</a>
+													<br />
+												</span>
+											</div>
+										</div>
+										<hr style="border-color: #DDDDDD !important;" />
+										<h6>
+											<strong>PRICE</strong>
+										</h6>
+										<div class="radio">
+											<label>
+												<input type="radio" name="priceRadios" value="option3" />
+												&nbsp;&nbsp;$100 & Up&nbsp;&nbsp;&nbsp;
+											</label>
+										</div>
+										<div class="radio">
+											<label>
+												<input type="radio" name="priceRadios" value="option2" checked />
+												&nbsp;&nbsp;$50 to $100
+											</label>
+										</div>
+										<div class="radio">
+											<label>
+												<input type="radio" name="priceRadios" value="option2" checked />
+												&nbsp;&nbsp;$25 to $50&nbsp;&nbsp;
+											</label>
+										</div>
+										<div class="radio">
+											<label>
+												<input type="radio" name="priceRadios" value="option2" checked />
+												&nbsp;&nbsp;$1&nbsp;&nbsp;&nbsp;to $25&nbsp;&nbsp;
+											</label>
+										</div>
+										<hr style="border-color: #DDDDDD !important;" />
+										<h6 class="">
+											<strong>RATING</strong>
+										</h6>
+										<div class="radio">
+											<label class="text-danger">
+												<input type="radio" name="ratingRadios" value="option5" />
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+											</label>
+											 & Up
+										</div>
+										<div class="radio">
+											<label class="text-danger">
+												<input type="radio" name="ratingRadios" value="option4" />
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+											</label>
+											 & Up
+										</div>
+										<div class="radio">
+											<label class="text-danger">
+												<input type="radio" name="ratingRadios" value="option3" checked />
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+											</label>
+											 & Up
+										</div>
+										<div class="radio">
+											<label class="text-danger">
+												<input type="radio" name="ratingRadios" value="option2" />
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+											</label>
+											 & Up
+										</div>
+										<div class="radio">
+											<label class="text-danger">
+												<input type="radio" name="ratingRadios" value="option1" />
+												<span class="glyphicon glyphicon-star"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+												<span class="glyphicon glyphicon-star-empty"></span>
+											</label>
+											 & Up
+										</div>
+									</div>
+								</div>
+							</span>
+						</div>
+						<div class="col-xs-12 col-sm-9">
+							<div class="row">
+								<div class="col-sm-8">
+									<div class="row">
+										<div class="col-xs-12">
+											<h6 class="text-muted text-right visible-xs" style="margin-top: 0px;">
+												<strong>PRODUCTS - PAGE 1 OF 4</strong>
+											</h6>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-5">
+											<h6 class="text-muted hidden-xs">
+												<strong>PRODUCTS - PAGE 1 OF 4</strong>
+											</h6>
+										</div>
+										<div class="col-sm-7">
+											<h6>
+											<button type="button" class="btn btn-default btn-block btn-xs">
+												Price <span class="glyphicon glyphicon-sort"></span>
+											</button>											
+											</h6>
+										</div>
+									</div>
+								</div>
+								<!-- Cart Desktop -->
+								<div class="col-sm-4 hidden-xs">
+									<button class="btn btn-success btn-block" style="margin-bottom: 0;">
+										<span class="glyphicon glyphicon-shopping-cart"></span>
+										 Cart (15)
+									</button>
+								</div>
+								<div class="col-xs-12">
+									<div class="panel panel-primary border-square" ng-repeat="product in data.products">
+										<div class="panel-heading border-square">
+											<strong>{{ product.name }}</strong>
+										</div>
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-xs-12 col-sm-5">
+													<img class="img-responsive center-block" src="image-sm.jpg" />
+													<br />
+												</div>
+												<div class="col-xs-12 col-sm-7">
+													<p>{{ product.description }}</p>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-4 col-sm-5">
+													<hr style="border-color: #DDDDFF !important;" />
+												</div>
+												<div class="col-xs-4 col-sm-2">
+													<h4 class="text-center text-danger">
+														<strong>{{ product.price | currency }}</strong>
+													</h4>
+												</div>
+												<div class="col-xs-4 col-sm-5">
+													<hr style="border-color: #DDDDFF !important;" />
+												</div>
+												<div class="col-xs-12 col-md-8 col-md-offset-2">
+													<button class="btn btn-warning btn-block">Add to Cart</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12">
+									<nav class="text-center">
+										<ul class="pagination pagination-lg">
+											<li class="disabled">
+												<a href="#">
+													<span>&laquo;</span>
+												</a>
+											</li>
+											<li class="active">
+												<a href="#">1</a>
+											</li>
+											<li>
+												<a href="#">2</a>
+											</li>
+											<li>
+												<a href="#">3</a>
+											</li>
+											<li>
+												<a href="#">4</a>
+											</li>
+											<li>
+												<a href="#">
+													<span>&raquo;</span>
+												</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 app-footer">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h4 style="margin-top: 0px; padding-top: 5px;">Copyright &copy; 2015 by Nick Repetti</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- JQuery CDN -->
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<!-- Bootstrap Javascript CDN -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" 
+		integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" 
+		crossorigin="anonymous"></script>
+	</body>
+</html>
