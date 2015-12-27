@@ -1,0 +1,137 @@
+<div class="col-xs-12 col-sm-3 text-center">
+	<!-- Desktop -->
+	<div class="col-sm-12 hidden-xs" style="border-right: 1px solid #DDDDDD;">
+		<div class="row">
+			<div class="col-sm-12">
+				<h6>
+					<strong>CATEGORY</strong>
+				</h6>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<span ng-repeat="category in data.categories">
+					<a href="#" ng-class="{'text-primary': $first, 'text-bold': $first, 'text-black': !$first}">
+						{{ category.name }}
+					</a>
+					<br />
+				</span>
+			</div>
+		</div>
+		<hr style="border-color: #DDDDDD !important;" />
+		<h6>
+			<strong>PRICE</strong>
+		</h6>
+		<div class="radio">
+			<label>
+				<input type="radio" name="priceRadios" value="option3" />
+				&nbsp;&nbsp;$100 & Up&nbsp;&nbsp;&nbsp;
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="priceRadios" value="option2" checked />
+				&nbsp;&nbsp;$50 to $100
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="priceRadios" value="option2" checked />
+				&nbsp;&nbsp;$25 to $50&nbsp;&nbsp;
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="priceRadios" value="option2" checked />
+				&nbsp;&nbsp;$1&nbsp;&nbsp;&nbsp;to $25&nbsp;&nbsp;
+			</label>
+		</div>
+		<hr style="border-color: #DDDDDD !important;" />
+		<h6 class="">
+			<strong>RATING</strong>
+		</h6>
+		<div class="radio">
+			<label class="text-danger">
+				<input type="radio" name="ratingRadios" value="option5" />
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+			</label>
+			 & Up
+		</div>
+		<div class="radio">
+			<label class="text-danger">
+				<input type="radio" name="ratingRadios" value="option4" />
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+			</label>
+			 & Up
+		</div>
+		<div class="radio">
+			<label class="text-danger">
+				<input type="radio" name="ratingRadios" value="option3" checked />
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+			</label>
+			 & Up
+		</div>
+		<div class="radio">
+			<label class="text-danger">
+				<input type="radio" name="ratingRadios" value="option2" />
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+			</label>
+			 & Up
+		</div>
+		<div class="radio">
+			<label class="text-danger">
+				<input type="radio" name="ratingRadios" value="option1" />
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+				<span class="glyphicon glyphicon-star-empty"></span>
+			</label>
+			 & Up
+		</div>
+	</div>
+	<!-- Mobile-->
+	<span class="visible-xs">
+		<a href="#collapseOne1" class="btn btn-warning btn-block border-square" data-toggle="collapse">
+			<strong>FILTER</strong>
+		</a>
+		<div id="collapseOne1" class="panel-collapse collapse">
+			<div class="btn-group-vertical btn-block">
+				<button type="button" class="btn border-square">
+					<strong>CATEGORY</strong>
+				</button>
+				<button type="button" class="btn border-square" ng-repeat="category in data.categories" href="#" ng-class="{'btn-primary': $first, 'text-bold': $first, 'text-black': !$first}">
+					{{ category.name }}
+				</button>
+			</div>
+			<hr style="border-color: #DDDDDD !important;" />
+			<h6 class="text-muted">
+				<strong>PRICE</strong>
+			</h6>
+				$$
+			<hr style="border-color: #DDDDDD !important;" />
+			<h6 class="text-muted">
+				<strong>RATING</strong>
+			</h6>
+				5 Stars
+			<br />
+			<br />
+		</div>
+	</span>
+</div>
