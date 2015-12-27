@@ -1,0 +1,36 @@
+.border { 
+	border: 1px solid #000000; 
+}
+
+.border-square {
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
+body {
+	background-color: #FFFFFF;
+}
+
+.app-footer {
+	font-size: 20px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	color: #FFFFFF;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(0,0,0,.1);
+	background-color: #24537E;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#296091),to(#24537E));
+	background-image: -webkit-linear-gradient(top,#296091 0,#24537E 100%);
+	background-image: -o-linear-gradient(top,#296091 0,#24537E 100%);
+	background-image: linear-gradient(to bottom,#296091 0,#24537E 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#24537E', endColorstr='#24537E', GradientType=0);
+	background-repeat: repeat-x;
+}
+.text-black {
+	color: #444444;
+}
+.text-black:hover {
+	color: #222222;
+	font-weight: bold;
+}

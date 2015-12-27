@@ -1,6 +1,7 @@
 var electronicsStore = angular.module("electronicsStore", []);
-
-electronicsStore.controller("electronicsStoreController", function($scope) {
+	
+electronicsStore.controller("electronicsStoreController", function($scope) {	
+	
 	$scope.data = {
 		categories: [
 			{

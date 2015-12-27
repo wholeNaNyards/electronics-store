@@ -4,7 +4,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		
 		<title>Products - Electronics Store</title>
-	
+		
 		<!-- Bootstrap Minified CSS CDN -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" 
 		integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" 
@@ -15,136 +15,10 @@
 		<!-- AngularJS CDN -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 		<script src="controllers/electronicsStore.js"></script>
-		<style>
-			.border { 
-				border: 1px solid #000000; 
-			}
-			
-			.border-square {
-				-webkit-border-radius: 0 !important;
-				-moz-border-radius: 0 !important;
-				border-radius: 0 !important;
-			}
-			
-			body {
-				background-color: #FFFFFF;
-			}
-			
-			.app-footer {
-				font-size: 20px;
-				padding-top: 12px;
-				padding-bottom: 12px;
-				color: #FFFFFF;
-				text-align: center;
-				text-shadow: 0 1px 0 rgba(0,0,0,.1);
-				background-color: #24537E;
-				background-image: -webkit-gradient(linear,left top,left bottom,from(#296091),to(#24537E));
-				background-image: -webkit-linear-gradient(top,#296091 0,#24537E 100%);
-				background-image: -o-linear-gradient(top,#296091 0,#24537E 100%);
-				background-image: linear-gradient(to bottom,#296091 0,#24537E 100%);
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#24537E', endColorstr='#24537E', GradientType=0);
-				background-repeat: repeat-x;
-			}
-			
-			/* custom Navbar Colors generated at http://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0 */
-			.navbar-custom {
-				background-color: #296091;
-				border-color: #24537E;
-			}
-			
-			.navbar-custom .navbar-brand {
-				color: #FFFFFF;
-			}
-			
-			.navbar-custom .navbar-brand:hover, .navbar-custom .navbar-brand:focus {
-				color: #dddddd;
-				background-color:transparent
-			}
-			
-			.navbar-custom .navbar-text {
-				color: #ffffff;
-			}
-
-			.navbar-custom .navbar-nav > li > a {
-				color: #ffffff;
-			}
-			
-			.navbar-custom .navbar-nav > li > a:hover, .navbar-custom .navbar-nav > li > a:focus {
-				color: #dddddd;
-				background-color: transparent;
-			}
-			
-			.navbar-custom .navbar-nav > .active > a, .navbar-custom .navbar-nav > .active > a:hover, .navbar-custom .navbar-nav > .active > a:focus {
-			  color: #ffffff;
-			  background-color: #24537E;
-			}
-			.navbar-custom .navbar-nav > .disabled > a, .navbar-custom .navbar-nav > .disabled > a:focus, .navbar-custom .navbar-nav > .disabled > a:hover {
-				color:#ccc;background-color:transparent
-			}
-	
-			.navbar-custom .navbar-toggle {
-			  border-color: #24537E;
-			}
-			.navbar-custom .navbar-toggle:hover, .navbar-custom .navbar-toggle:focus {
-			  background-color: #24537E;
-			}
-			.navbar-custom .navbar-toggle .icon-bar {
-			  background-color: #ffffff;
-			}
-			.navbar-custom .navbar-collapse,
-			.navbar-custom .navbar-form {
-			  border-color: #ffffff;
-			}
-
-			.navbar-custom .navbar-nav > .open > a, .navbar-custom .navbar-nav > .open > a:hover, .navbar-custom .navbar-nav > .open > a:focus {
-			  color: #dddddd;
-			  background-color: #24537E;
-			}
-			
-			@media (max-width: 767px) {
-			  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
-				color: #ffffff;
-			  }
-			  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
-				color: #dddddd;
-				background-color:transparent
-			  }
-			  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a, .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
-				color: #dddddd;
-				background-color: #24537E;
-			  }
-			  
-			  	.navbar-custom .navbar-nav .open .dropdown-menu>.disabled>a,.navbar-custom .navbar-nav .open .dropdown-menu>.disabled>a:focus,.navbar-custom .navbar-nav .open .dropdown-menu>.disabled>a:hover {
-					color:#ccc;background-color:transparent
-				}
-			}
-			
-			.navbar-custom .navbar-link {
-			  color: #ffffff;
-			}
-			.navbar-custom .navbar-link:hover {
-			  color: #dddddd;
-			}
-			
-			.navbar-custom .btn-link {
-				color:#777
-			}
-
-			.navbar-custom .btn-link:focus,.navbar-custom .btn-link:hover {
-				color:#333
-			}
-
-			.navbar-custom .btn-link[disabled]:focus,.navbar-custom .btn-link[disabled]:hover,fieldset[disabled] .navbar-custom .btn-link:focus,fieldset[disabled] .navbar-custom .btn-link:hover {
-				color:#ccc
-			}
-			.text-black {
-				color: #444444;
-			}
-			.text-black:hover {
-				color: #222222;
-				font-weight: bold;
-			}
-		</style>
+		<script src="controllers/productListController.js"></script>
+		
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="navbar-custom.css" />
 	</head>
 	<body ng-controller="electronicsStoreController">
 		<!-- Navigation -->
@@ -363,7 +237,7 @@
 								</div>
 							</span>
 						</div>
-						<div class="col-xs-12 col-sm-9">
+						<div class="col-xs-12 col-sm-9" ng-controller="productListController">
 							<div class="row">
 								<div class="col-sm-8">
 									<div class="row">
@@ -423,7 +297,7 @@
 													<hr style="border-color: #DDDDFF !important;" />
 												</div>
 												<div class="col-xs-12 col-md-8 col-md-offset-2">
-													<button class="btn btn-warning btn-block">Add to Cart</button>
+													<button ng-click="addToCart(product)" class="btn btn-warning btn-block">Add to Cart</button>
 												</div>
 											</div>
 										</div>
@@ -438,7 +312,7 @@
 												</a>
 											</li>
 											<li class="active">
-												<a href="#">1</a>
+												<a href="#" ng-click="paginationTest()">1</a>
 											</li>
 											<li>
 												<a href="#">2</a>
