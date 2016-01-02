@@ -47,7 +47,7 @@
 			</label>
 		</div>
 		<hr style="border-color: #DDDDDD !important;" />
-		<h6 class="">
+		<h6>
 			<strong>RATING</strong>
 		</h6>
 		<div class="radio">
@@ -102,27 +102,142 @@
 		</div>
 	</div>
 	<!-- Mobile-->
-	<div class="col-xs-12 visible-xs">
+	<span class="visible-xs">
+		<div class="col-xs-12 filterMarginTop">
+			<label class="text-muted">Price</label>
+		</div>
+		<div class="col-xs-5">
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">$</div>
+					<select class="form-control">
+						<option>0</option>
+						<option>5</option>
+						<option>10</option>
+						<option>25</option>
+						<option>50</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-7">
+			<div class="row">
+				<div class="col-xs-2 filterMarginTop">
+					<label class="text-muted">To</label>
+				</div>
+				<div class="col-xs-10">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">$</div>
+							<select class="form-control">
+								<option>5</option>
+								<option>10</option>
+								<option>25</option>
+								<option>50</option>
+								<option>100</option>
+								<option>1000</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="col-xs-12">
-			PRICE
+			<label class="text-muted">Category</label>
 		</div>
+		
+		<!--
+		<div class="col-xs-6 filterMarginTop">
+			<label class="text-muted">Rating</label>
+		</div>
+		-->
+		
+		<div class="col-xs-12">
+			<select class="form-control">
+				<option ng-repeat="category in data.categories">{{ category.name }}</option>
+			</select>
+		</div>
+		
+		<!-- Removed rating system for now 
+		
 		<div class="col-xs-6">
-			LEFT
-		</div>
-		<div class="col-xs-6">
-			RIGHT
-		</div>
-		<div class="col-xs-6">
-			CATEGORY
-		</div>
-		<div class="col-xs-6">
-			RATING
-		</div>
-		<div class="col-xs-6">
-			LEFT
-		</div>
-		<div class="col-xs-6">
-			RIGHT
-		</div>
-	</div>
+		
+		
+			<div class="btn-group form-control">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<span class="text-danger">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</span>
+					&nbsp;<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li class="text-danger">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</li>
+					<li><span class="glyphicon glyphicon-fire"></span></li>
+					<li><span class="glyphicon glyphicon-glass"></span></li>
+					<li><span class="glyphicon glyphicon-heart"></span></li>          
+				</ul>
+			</div>
+		
+		
+		
+		
+			<select class="form-control">
+				<option>
+					<h6 class="text-danger">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+					</h6>
+				</option>
+				<option name="ratingSelect" value="option4">
+					<label class="text-danger">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+					</label>
+				</option>
+				<option name="ratingSelect" value="option3">
+					<label class="text-danger">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+					</label>
+				</option>
+				<option name="ratingSelect" value="option2">
+					<label class="text-danger">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+					</label>
+				</option>
+				<option name="ratingSelect" value="option1">
+					<label class="text-danger">
+						<span class="glyphicon glyphicon-star"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+						<span class="glyphicon glyphicon-star-empty"></span>
+					</label>
+				</option>
+			</select>
+		</div>-->
+	</span>
 </div>

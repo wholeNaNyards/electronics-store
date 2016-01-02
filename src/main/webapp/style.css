@@ -40,3 +40,12 @@ body {
 	padding-right: 5px;
 	font-size: 18px;
 }
+
+.filterMarginTop {
+	margin-top: 7px;
+}
+
+#sort-alpha:hover, #sort-alpha:visited, #sort-alpha:link, #sort-alpha:active,
+#sort-price:hover, #sort-price:visited, #sort-price:link, #sort-price:active {
+    text-decoration: none;
+}

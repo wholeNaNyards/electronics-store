@@ -5,6 +5,8 @@ electronicsStore.controller("electronicsStoreController", function($scope) {
 	$scope.data = {
 		categories: [
 			{
+				name: 'All'
+			}, {
 				name: 'Televisions'
 			}, {
 				name: 'Video Games'
