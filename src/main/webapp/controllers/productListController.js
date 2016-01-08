@@ -1,12 +1,25 @@
-var electronicsStore = angular.module("electronicsStore");
+var electronicsStore = angular.module('electronicsStore');
 
-electronicsStore.controller("productListController", function($scope) {
+electronicsStore.controller('productListController', function($scope, ProductList) {
 		
-	$scope.addToCart = function(product) {
-		alert(product.name + ' ' + product.price);
+	$scope.productList = ProductList.data;
+	
+	// Initial page load
+	ProductList.loadProducts();
+	
+	// View Event Handlers
+	// Pagination Clicked
+	$scope.changePage = function(page) {
+		ProductList.changePage(page)
+	};
+
+	// Sort AZ button clicked
+	$scope.toggleSortAZ = function() {
+		ProductList.toggleSortAZ();
 	}
 	
-	$scope.paginationTest = function() {
-		alert('Pagination Clicked');
+	// Sort AZ button clicked
+	$scope.toggleSortPrice = function() {
+		ProductList.toggleSortPrice();
 	}
 });

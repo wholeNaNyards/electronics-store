@@ -1,24 +1,21 @@
-<div class="col-xs-12 col-sm-9" ng-controller="productListController">
-	<div class="col-xs-6">
-		<h6 class="text-left">
-			<strong>
-				<a href="#" class="text-primary" id="sort-price">
-					PRICE&nbsp;<span class="glyphicon glyphicon-sort"></span>
-				</a>
-				<span class="divider-bar text-muted">|</span>
-				<a href="#" class="text-muted" id="sort-alpha">
-					A - Z&nbsp;<span class="glyphicon glyphicon-sort"></span>
-				</a>
-			</strong>
-		</h6>
-	</div>
-	<div class="col-xs-6" style="margin-top: 6px;">
-		<h6 class="text-right text-muted">
-			<strong>PAGE 1 OF 4</strong>
-		</h6>
-	</div>	
+<div class="row" ng-controller="productListController">
+	<!-- Sort Options -->
 	<div class="col-xs-12">
-		<div class="panel panel-primary border-square" ng-repeat="product in data.products">
+		<a href="#" class="text-muted" id="sort-alpha" ng-click="toggleSortAZ()">
+			<strong ng-if="productList.sortAZ">A - Z&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
+			<strong ng-if="!productList.sortAZ">Z - A&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
+		</a>
+		<span class="divider-bar text-muted">|</span>
+		<a href="#" class="text-muted" id="sort-price" ng-click="toggleSortPrice()">
+			<strong>Price&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
+		</a>
+		<strong><span class="pull-right text-muted">PAGE 1 OF 4</span></strong>
+		<br />
+	</div>
+	<!-- Products Container -->
+	<div class="col-xs-12">
+		<!-- Individual Product Panel -->
+		<div class="panel panel-primary border-square" ng-repeat="product in productList.products">
 			<div class="panel-heading border-square">
 				<strong>{{ product.name }}</strong>
 			</div>
@@ -45,12 +42,14 @@
 						<hr style="border-color: #DDDDFF !important;" />
 					</div>
 					<div class="col-xs-12 col-md-8 col-md-offset-2">
-						<button ng-click="addToCart(product)" class="btn btn-warning btn-block">Add to Cart</button>
+						<button ng-if="!itemInCart(product.id)" ng-click="addToCart(product.id)" class="btn btn-warning btn-block">Add to Cart</button>
+						<button ng-if="itemInCart(product.id)" ng-click="removeFromCart(product.id)" class="btn btn-danger btn-block">Remove from Cart</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- Pagination -->
 	<div class="col-xs-12">
 		<nav class="text-center">
 			<ul class="pagination pagination-lg">
@@ -60,10 +59,10 @@
 					</a>
 				</li>
 				<li class="active">
-					<a href="#" ng-click="paginationTest()">1</a>
+					<a href="#">1</a>
 				</li>
 				<li>
-					<a href="#">2</a>
+					<a href="#" ng-click="changePage(2)">2</a>
 				</li>
 				<li>
 					<a href="#">3</a>

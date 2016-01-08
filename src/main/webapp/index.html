@@ -14,8 +14,14 @@
 		integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous" />
 		<!-- AngularJS CDN -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		
+		<!-- App Imports -->
 		<script src="controllers/electronicsStore.js"></script>
+		<script src="services/cartFactory.js"></script>
+		<script src="services/CategoryList.js"></script>
+		<script src="services/ProductList.js"></script>
 		<script src="controllers/productListController.js"></script>
+		<script src="controllers/productListFilterController.js"></script>
 		
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="navbar-custom.css" />
@@ -29,23 +35,31 @@
 			<div class="row">
 				<!-- Content Container -->
 				<div class="col-md-10 col-md-offset-1 col-lg-9">
-					<div class="row">
-					
-						<!-- Cart Button Mobile -->
-						<div class="col-xs-12 visible-xs">
-							<div class="col-xs-12">
-								<button class="btn btn-success btn-block">
-									<span class="glyphicon glyphicon-shopping-cart"></span>
-									 Cart (15)
-								</button>
-							</div>
+					<!-- Cart Button Mobile -->
+					<div class="row visible-xs">					
+						<div class="col-xs-12">
+							<button class="btn btn-success btn-block">
+								<span class="glyphicon glyphicon-shopping-cart"></span>
+								 Cart ({{ cart.size }})
+							</button>
 						</div>
-					
+					</div>
+					<div class="row">
 						<!-- Product List Filter -->
-						<ng-include src="'views/productListFilter.html'"></ng-include>
-						
+						<div class="col-xs-12 col-sm-3">
+							<ng-include src="'views/productListFilter.html'"></ng-include>
+							<br />
+						</div>
 						<!-- Product List -->
-						<ng-include src="'views/productList.html'"></ng-include>
+						<div class="col-xs-12 col-sm-9">
+								<ng-include src="'views/productList.html'"></ng-include>
+						</div>
+						<!-- Cart List -->
+						<!--
+						<div class="col-xs-12 col-sm-9 col-sm-offset-3">
+								<ng-include src="'views/cartList.html'"></ng-include>
+						</div>
+						-->
 					</div>
 				</div>
 				<!-- Footer -->
