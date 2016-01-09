@@ -1,0 +1,18 @@
+<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+	<!-- Cart -->
+	<span ng-if="!emptyCart()">
+		<!-- Checkout Button -->
+		<a href="underConstruction" class="btn btn-warning btn-block">
+				<span class="glyphicon glyphicon-shopping-cart"></span>
+				 Checkout (2) - $19.25
+			</a>
+			<br />
+		<!-- Cart List -->
+		<ng-include src="'../partials/cartList.html'"></ng-include>
+	</span>
+	<!-- Empty Cart -->
+	<div ng-if="emptyCart()" class="jumbotron" style="padding-left: 50px;">
+		<h1>Your cart is empty :(</h1>
+		<p><a class="btn btn-primary btn-lg" href="products" role="button">Let's Shop!</a></p>
+	</div>
+</div>

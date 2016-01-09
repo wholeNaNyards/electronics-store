@@ -5,11 +5,8 @@ electronicsStore.factory('cartFactory', function($http, $q) {
 	var factory = {};
 	
 	factory.data = {
-		products: {
-			'3': 1,
-			'2': 1
-		},
-		size: 2
+		products: {},
+		size: 0
 	};
 	
 	factory.loadCart = function() {
@@ -33,6 +30,10 @@ electronicsStore.factory('cartFactory', function($http, $q) {
 
 	factory.itemInCart = function(productId) {
 		return factory.data.products[productId] > 0;
+	}
+	
+	factory.emptyCart = function() {
+		return factory.data.size == 0;
 	}
 	
 	return factory;

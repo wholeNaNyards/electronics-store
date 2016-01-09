@@ -14,6 +14,8 @@
 		integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous" />
 		<!-- AngularJS CDN -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.min.js">-->
 		
 		<!-- App Imports -->
 		<script src="controllers/electronicsStore.js"></script>
@@ -25,47 +27,23 @@
 		
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="navbar-custom.css" />
+		
+		<base href="/">
 	</head>
 	<body ng-controller="electronicsStoreController">
 		<!-- Navigation -->
-		<ng-include src="'views/navbar.html'"></ng-include>
+		<ng-include src="'partials/navbar.html'"></ng-include>
 		
 		<!-- Main Container -->
 		<div class="container-fluid" style="margin-top: 22px;">
 			<div class="row">
 				<!-- Content Container -->
-				<div class="col-md-10 col-md-offset-1 col-lg-9">
-					<!-- Cart Button Mobile -->
-					<div class="row visible-xs">					
-						<div class="col-xs-12">
-							<button class="btn btn-success btn-block">
-								<span class="glyphicon glyphicon-shopping-cart"></span>
-								 Cart ({{ cart.size }})
-							</button>
-						</div>
-					</div>
-					<div class="row">
-						<!-- Product List Filter -->
-						<div class="col-xs-12 col-sm-3">
-							<ng-include src="'views/productListFilter.html'"></ng-include>
-							<br />
-						</div>
-						<!-- Product List -->
-						<div class="col-xs-12 col-sm-9">
-								<ng-include src="'views/productList.html'"></ng-include>
-						</div>
-						<!-- Cart List -->
-						<!--
-						<div class="col-xs-12 col-sm-9 col-sm-offset-3">
-								<ng-include src="'views/cartList.html'"></ng-include>
-						</div>
-						-->
-					</div>
-				</div>
+				<ng-view></ng-view>
 				<!-- Footer -->
-				<ng-include src="'views/footer.html'"></ng-include>
+				<ng-include src="'partials/footer.html'"></ng-include>
 			</div>
 		</div>
+		
 		<!-- JQuery CDN -->
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<!-- Bootstrap Javascript CDN -->

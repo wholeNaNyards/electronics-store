@@ -1,0 +1,80 @@
+<div class="row" ng-controller="productListController">
+	<!-- Sort Options -->
+	<div class="col-xs-12">
+		<a href="#" class="text-muted" id="sort-alpha" ng-click="toggleSortAZ()">
+			<strong ng-if="productList.sortAZ">A - Z&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
+			<strong ng-if="!productList.sortAZ">Z - A&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
+		</a>
+		<span class="divider-bar text-muted">|</span>
+		<a href="#" class="text-muted" id="sort-price" ng-click="toggleSortPrice()">
+			<strong>Price&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
+		</a>
+		<strong><span class="pull-right text-muted">PAGE 1 OF 4</span></strong>
+		<br />
+	</div>
+	<!-- Products Container -->
+	<div class="col-xs-12">
+		<!-- Individual Product Panel -->
+		<div ng-if="itemInCart(product.id)" class="panel panel-primary border-square" ng-repeat="product in productList.products">
+			<div class="panel-heading border-square">
+				<strong>{{ product.name }}</strong>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-5">
+						<img class="img-responsive center-block" src="image-sm.jpg" />
+						<br />
+					</div>
+					<div class="col-xs-12 col-sm-7">
+						<p>{{ product.description }}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4 col-sm-5">
+						<hr style="border-color: #DDDDFF !important;" />
+					</div>
+					<div class="col-xs-4 col-sm-2">
+						<h4 class="text-center text-danger">
+							<strong>{{ product.price | currency }}</strong>
+						</h4>
+					</div>
+					<div class="col-xs-4 col-sm-5">
+						<hr style="border-color: #DDDDFF !important;" />
+					</div>
+					<div class="col-xs-12 col-md-8 col-md-offset-2">
+						<button ng-if="itemInCart(product.id)" ng-click="removeFromCart(product.id)" class="btn btn-danger btn-block">Remove from Cart</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Pagination -->
+	<div class="col-xs-12">
+		<nav class="text-center">
+			<ul class="pagination pagination-lg">
+				<li class="disabled">
+					<a href="#">
+						<span>&laquo;</span>
+					</a>
+				</li>
+				<li class="active">
+					<a href="#">1</a>
+				</li>
+				<li>
+					<a href="#" ng-click="changePage(2)">2</a>
+				</li>
+				<li>
+					<a href="#">3</a>
+				</li>
+				<li>
+					<a href="#">4</a>
+				</li>
+				<li>
+					<a href="#">
+						<span>&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
