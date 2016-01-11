@@ -1,13 +1,6 @@
 <div class="col-md-10 col-md-offset-1 col-lg-9">
 	<!-- Cart Button Mobile -->
-	<div class="row visible-xs">					
-		<div class="col-xs-12">
-			<a href="cart" class="btn btn-success btn-block">
-				<span class="glyphicon glyphicon-shopping-cart"></span>
-				 Cart ({{ cart.size }})
-			</a>
-		</div>
-	</div>
+	<ng-include src="'../partials/cartButtonMobile.html'"></ng-include>
 	<div class="row">
 		<!-- Product List Filter -->
 		<div class="col-xs-12 col-sm-3">

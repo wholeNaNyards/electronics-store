@@ -1,15 +1,33 @@
+<!-- Cart Desktop -->
+<div ng-if="!emptyCart()" class="hidden-xs col-md-10 col-md-offset-1 col-lg-9">
+	<div class="row">
+		<!-- Checkout Panel -->
+		<div class="col-xs-12 col-sm-3">
+			<br />
+			<ng-include src="'../partials/checkoutPanel.html'"></ng-include>
+		</div>
+		<!-- Cart List -->
+		<div class="col-xs-12 col-sm-9">
+			<ng-include src="'../partials/cartList.html'"></ng-include>
+		</div>
+	</div>
+</div>
 <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-	<!-- Cart -->
-	<span ng-if="!emptyCart()">
+	<!-- Cart Mobile -->
+	<div class="row" ng-if="!emptyCart()">
 		<!-- Checkout Button -->
-		<a href="underConstruction" class="btn btn-warning btn-block">
+		<div class="col-xs-12">
+			<a href="underConstruction" class="visible-xs btn btn-warning btn-block">
 				<span class="glyphicon glyphicon-shopping-cart"></span>
 				 Checkout (2) - $19.25
 			</a>
 			<br />
+		</div>
 		<!-- Cart List -->
-		<ng-include src="'../partials/cartList.html'"></ng-include>
-	</span>
+		<div class="visible-xs col-xs-12">
+			<ng-include src="'../partials/cartList.html'"></ng-include>
+		</div>
+	</div>
 	<!-- Empty Cart -->
 	<div ng-if="emptyCart()" class="jumbotron" style="padding-left: 50px;">
 		<h1>Your cart is empty :(</h1>

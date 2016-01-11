@@ -31,7 +31,7 @@
 		<base href="/">
 	</head>
 	<body ng-controller="electronicsStoreController">
-		<!-- Navigation -->
+		<!-- Navbar -->
 		<ng-include src="'partials/navbar.html'"></ng-include>
 		
 		<!-- Main Container -->
@@ -39,13 +39,24 @@
 			<div class="row">
 				<!-- Content Container -->
 				<ng-view></ng-view>
-				<!-- Footer -->
-				<ng-include src="'partials/footer.html'"></ng-include>
 			</div>
 		</div>
 		
+		<!-- Footer -->
+		<ng-include src="'partials/footer.html'"></ng-include>
+		
 		<!-- JQuery CDN -->
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		
+		<!-- Bootstrap override to collapse navbar on click in mobile view -->
+		<script>
+		$(document).on('click','.navbar-collapse.in',function(e) {
+			if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+				$(this).collapse('hide');
+			}
+		});
+		</script>
+		
 		<!-- Bootstrap Javascript CDN -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" 
 		integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" 

@@ -22,4 +22,12 @@ electronicsStore.controller('productListController', function($scope, ProductLis
 	$scope.toggleSortPrice = function() {
 		ProductList.toggleSortPrice();
 	}
+	
+	$scope.isFirstPageSet = function() {
+		return ProductList.isFirstPageSet();
+	}
+	
+	$scope.isLastPageSet = function() {
+		return ProductList.isLastPageSet();
+	}
 });

@@ -1,14 +1,7 @@
 <div class="row" ng-controller="productListController">
 	<!-- Sort Options -->
 	<div class="col-xs-12">
-		<a href="#" class="text-muted" id="sort-alpha" ng-click="toggleSortAZ()">
-			<strong ng-if="productList.sortAZ">A - Z&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
-			<strong ng-if="!productList.sortAZ">Z - A&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
-		</a>
-		<span class="divider-bar text-muted">|</span>
-		<a href="#" class="text-muted" id="sort-price" ng-click="toggleSortPrice()">
-			<strong>Price&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
-		</a>
+		<ng-include src="'../partials/productSortBar.html'"></ng-include>
 		<strong><span class="pull-right text-muted">PAGE 1 OF 4</span></strong>
 		<br />
 	</div>
@@ -42,8 +35,8 @@
 						<hr style="border-color: #DDDDFF !important;" />
 					</div>
 					<div class="col-xs-12 col-md-8 col-md-offset-2">
-						<button ng-if="!itemInCart(product.id)" ng-click="addToCart(product.id)" class="btn btn-warning btn-block">Add to Cart</button>
-						<button ng-if="itemInCart(product.id)" ng-click="removeFromCart(product.id)" class="btn btn-danger btn-block">Remove from Cart</button>
+						<button ng-if="!itemInCart(product.id)" ng-click="addToCart(product)" class="btn btn-warning btn-block">Add to Cart</button>
+						<button ng-if="itemInCart(product.id)" ng-click="removeFromCart(product)" class="btn btn-danger btn-block">Remove from Cart</button>
 					</div>
 				</div>
 			</div>
@@ -51,31 +44,6 @@
 	</div>
 	<!-- Pagination -->
 	<div class="col-xs-12">
-		<nav class="text-center">
-			<ul class="pagination pagination-lg">
-				<li class="disabled">
-					<a href="#">
-						<span>&laquo;</span>
-					</a>
-				</li>
-				<li class="active">
-					<a href="#">1</a>
-				</li>
-				<li>
-					<a href="#" ng-click="changePage(2)">2</a>
-				</li>
-				<li>
-					<a href="#">3</a>
-				</li>
-				<li>
-					<a href="#">4</a>
-				</li>
-				<li>
-					<a href="#">
-						<span>&raquo;</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
+		<ng-include src="'../partials/productPaginationBar.html'"></ng-include>
 	</div>
 </div>

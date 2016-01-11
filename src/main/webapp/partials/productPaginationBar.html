@@ -1,0 +1,29 @@
+<nav class="text-center">
+	<ul class="pagination pagination-lg">
+		<li ng-show="!isFirstPageSet()">
+			<a href="#">
+				<span>&laquo;</span>
+			</a>
+		</li>
+		<li class="active">
+			<a href="#">1</a>
+		</li>
+		<li>
+			<a href="#" ng-click="changePage(2)">2</a>
+		</li>
+		<li>
+			<a href="#">3</a>
+		</li>
+		<li>
+			<a href="#">4</a>
+		</li>
+		<li>
+			<a href="#">5</a>
+		</li>
+		<li ng-show="!isLastPageSet()">
+			<a href="#">
+				<span>&raquo;</span>
+			</a>
+		</li>
+	</ul>
+</nav>

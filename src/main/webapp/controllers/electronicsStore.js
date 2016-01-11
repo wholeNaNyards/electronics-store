@@ -1,27 +1,32 @@
 var electronicsStore = angular.module("electronicsStore", ['ngRoute']);
 	
-electronicsStore.controller("electronicsStoreController", function($scope, cartFactory) {	
+electronicsStore.controller("electronicsStoreController", function($scope, $location, cartFactory) {	
 	
 	$scope.cart = cartFactory.data;
 	
 	cartFactory.loadCart();
 	
-	// Add to cart button clicked
-	$scope.addToCart = function(productId) {
-		cartFactory.addToCart(productId);
+	$scope.addToCart = function(product) {
+		cartFactory.addToCart(product);
 	}
 
-	// Remove from cart button clicked
-	$scope.removeFromCart = function(productId) {
-		cartFactory.removeFromCart(productId);
+	$scope.removeFromCart = function(product) {
+		cartFactory.removeFromCart(product);
 	}
 	
+	// Returns true if the product id is in the User's cart
 	$scope.itemInCart = function(productId) {
 		return cartFactory.itemInCart(productId);
 	}
 	
+	// Returns true if the User's cart is empty
 	$scope.emptyCart = function() {
 		return cartFactory.emptyCart();
+	}
+	
+	// Returns true if page is the current page
+	$scope.isCurrentPage = function(page) {
+		return page === $location.path();
 	}
 });
 

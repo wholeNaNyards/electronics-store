@@ -1,0 +1,18 @@
+<div class="row" style="border-right: 1px solid #DDDDDD;">
+	<!-- Category Filter -->
+	<div class="col-xs-12">
+		<div class="panel panel-default border-square">
+			<div class="panel-heading border-square" style="font-size: 18px;">
+				<strong>Order Summary</strong>
+			</div>
+			<div class="panel-body" style="padding-top: 2px;">
+				<h4>Items: {{ cart.size }}</h4>
+				<h4>Subtotal: <span class="text-danger">{{ cart.subtotal | currency }}</span></h4>
+				<a href="underConstruction" class="btn btn-warning btn-block">
+					<span class="glyphicon glyphicon-shopping-cart"></span>
+					 Checkout
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

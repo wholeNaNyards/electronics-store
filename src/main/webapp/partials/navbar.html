@@ -7,38 +7,46 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="home">
+			<a href="home" class="navbar-brand">
 				<span class="glyphicon glyphicon-tags"></span>
 				<span class="hidden-xs">&nbsp;Store</span>
 			</a>
+			<h3 class="visible-xs" style="color: #FFFFFF; margin-top: 13px;">
+				<span ng-if="isCurrentPage('/home')">&nbsp;Home</span>
+				<span ng-if="isCurrentPage('/cart')">&nbsp;Cart</span>
+			</h3>		
 			<!-- Search Bar mobile -->
-			<span class="visible-xs" style="margin-top: 8px;">
-				<form class="form-group" style="margin-bottom: 0;" role="search">
-					<div class="input-group" style="padding-right: 15px;">
-						<input type="text" class="form-control" placeholder="Search..." />
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
-								<span class="glyphicon glyphicon-search text-muted"></span>
-							</button>
-						</div>
+			<form 	ng-if="isCurrentPage('/products') || isCurrentPage('/')" 
+					class="form-group visible-xs" 
+					style="margin-bottom: 4px; margin-top: -4px;" 
+					role="search">
+				<div class="input-group" style="padding-right: 15px;">
+					<input type="text" class="form-control" placeholder="Search..." />
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit">
+							<span class="glyphicon glyphicon-search text-muted"></span>
+						</button>
 					</div>
-				</form>
-			</span>
+				</div>
+			</form>
 		</div>
 		<div class="collapse navbar-collapse" id="navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li>
+				<li ng-class="{ active: isCurrentPage('/home') }">
 					<a href="home">Home</a>
 				</li>
-				<li class="active">
-					<a href="products">Products <span class="sr-only">(current)</span></a>
+				<li ng-class="{ active: isCurrentPage('/products') || isCurrentPage('/') }">
+					<a href="products">Products</a>
+				</li>
+				<li ng-show="isCurrentPage('/cart')" class="active">
+					<a href="cart">Cart</a>
 				</li>
 			</ul>
 			<!-- Search Bar Desktop -->
-			<div class="col-sm-6 col-md-7 col-lg-8 hidden-xs" style="margin-top: 8px; margin-left: 15px;">
+			<div ng-if="isCurrentPage('/products') || isCurrentPage('/')" class="col-sm-6 col-md-7 col-lg-8 hidden-xs" style="margin-top: 8px; margin-left: 15px;">
 				<form class="form-group" style="margin-bottom: 0;" role="search">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search for products..." name="srch-term" id="srch-term">
+						<input type="text" class="form-control" placeholder="Search for products...">
 						<div class="input-group-btn">
 							<button class="btn btn-default" type="submit">
 								<span class="glyphicon glyphicon-search text-muted"></span>
@@ -47,9 +55,10 @@
 					</div>
 				</form>
 			</div>
-			<ul class="nav navbar-nav navbar-right">
+			<!-- Cart Button Desktop -->
+			<ul ng-if="!isCurrentPage('/cart')" class="hidden-xs nav navbar-nav navbar-right">
 				<li>
-					<p class="hidden-xs navbar-btn">
+					<p class="navbar-btn">
 						<a href="cart" class="btn btn-success">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							 Cart ({{ cart.size }})

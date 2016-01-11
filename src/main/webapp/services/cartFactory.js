@@ -6,7 +6,8 @@ electronicsStore.factory('cartFactory', function($http, $q) {
 	
 	factory.data = {
 		products: {},
-		size: 0
+		size: 0,
+		subtotal: 0.0
 	};
 	
 	factory.loadCart = function() {
@@ -14,18 +15,24 @@ electronicsStore.factory('cartFactory', function($http, $q) {
 		// factory.data.size = factory.data.products.length;
 	};
 	
-	factory.addToCart = function(productId) {
+	factory.addToCart = function(product) {
+		var productId = product.id;
+		
 		if (!factory.data.products[productId]) {
 			factory.data.products[productId] = 0;
 		}
 		
 		factory.data.products[productId]++;
 		factory.data.size++;
+		factory.data.subtotal += product.price;
 	};
 
-	factory.removeFromCart = function(productId) {
+	factory.removeFromCart = function(product) {
+		var productId = product.id;
+		
 		factory.data.products[productId] = null;
 		factory.data.size--;
+		factory.data.subtotal -= product.price;
 	};
 
 	factory.itemInCart = function(productId) {

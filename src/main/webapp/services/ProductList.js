@@ -63,6 +63,14 @@ electronicsStore.factory('ProductList', function($http, $q, $filter) {
 		updateProducts();
 	};
 
+	productList.isFirstPageSet = function() {
+		return true;
+	}
+	
+	productList.isLastPageSet = function() {
+		return false;
+	}
+	
 	function updateProducts() {
 		productList.data.products = getCurrentPageOfProducts();
 	};
