@@ -1,6 +1,5 @@
 package com.nickrepetti.estore.dao.jdbc.mapper;
 
-import com.nickrepetti.estore.dao.jdbc.mapper.CategoryResultSetExtractor;
 import com.nickrepetti.estore.model.Category;
 
 import java.sql.ResultSet;
@@ -11,6 +10,11 @@ public class CategoryRowMapper implements RowMapper<Category> {
 	
 	@Override
 	public Category mapRow(ResultSet rs, int rowNum) throws SQLException {
-		return new CategoryResultSetExtractor().extractData(rs);
+		Category category = new Category();
+		
+		category.setId(rs.getLong("id"));
+		category.setName(rs.getString("name"));
+		
+		return category;
 	}
 }

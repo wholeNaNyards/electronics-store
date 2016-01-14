@@ -1,9 +1,12 @@
 <div class="row" ng-controller="productListController">
-	<!-- Sort Options -->
+	<!-- Sort & Pagination Options -->
 	<div class="col-xs-12">
-		<ng-include src="'../partials/productSortBar.html'"></ng-include>
-		<strong><span class="pull-right text-muted">PAGE 1 OF 4</span></strong>
-		<br />
+		<ng-include src="'../partials/productSortBar.html'"></ng-include>		
+		<strong class="pull-right text-muted">
+			<a class="text-muted sort-button" style="font-size: 18px;" ng-click="previousPage()">&laquo; </a>
+			PAGE {{ productList.currentPage }} OF {{ productList.lastPage }}
+			<a class="text-muted sort-button" style="font-size: 18px;" ng-click="nextPage()"> &raquo;</a>
+		</strong>
 	</div>
 	<!-- Products Container -->
 	<div class="col-xs-12">

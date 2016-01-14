@@ -64,3 +64,5 @@ electronicsStore.config(function($routeProvider, $locationProvider) {
 
     $locationProvider.html5Mode(true);
 });
+
+electronicsStore.constant("productsURL", "http://localhost:8080/items");

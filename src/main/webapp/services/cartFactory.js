@@ -22,6 +22,8 @@ electronicsStore.factory('cartFactory', function($http, $q) {
 			factory.data.products[productId] = 0;
 		}
 		
+		// AJAX
+		
 		factory.data.products[productId]++;
 		factory.data.size++;
 		factory.data.subtotal += product.price;
@@ -29,6 +31,8 @@ electronicsStore.factory('cartFactory', function($http, $q) {
 
 	factory.removeFromCart = function(product) {
 		var productId = product.id;
+
+		// AJAX
 		
 		factory.data.products[productId] = null;
 		factory.data.size--;

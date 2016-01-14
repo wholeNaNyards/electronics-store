@@ -11,7 +11,7 @@ import java.util.Map;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-@JsonInclude(Include.NON_NULL)
+@JsonInclude(Include.NON_EMPTY)
 public class Item {
 	
 	private Long id;
@@ -19,6 +19,7 @@ public class Item {
 	private String description;
 	private BigDecimal price;
 	private int rating;
+	private int totalItemCount;
 	private Image image;
 	
 	// Item's list of categories that it belongs to
@@ -64,6 +65,14 @@ public class Item {
 	
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+		
+	public int getTotalItemCount() {
+		return totalItemCount;
+	}
+	
+	public void setTotalItemCount(int totalItemCount) {
+		this.totalItemCount = totalItemCount;
 	}
 	
 	public Image getImage() {

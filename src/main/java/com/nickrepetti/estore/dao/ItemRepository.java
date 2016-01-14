@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface ItemRepository {
 	
-	public List<Item> getItems();
-
-	// public List<Item> getItems(ItemFilter itemFilter);
-	// public List<Item> getItems(int perPg, int pgNum, int categoryId ...);
+	public List<Item> getItems(int minPrice, int maxPrice, int categoryId, 
+							   boolean sortAZ, boolean sortPrice, int limit,
+							   int offset);
 }

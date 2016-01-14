@@ -19,7 +19,7 @@
 		<div class="col-xs-12">
 			<a href="underConstruction" class="visible-xs btn btn-warning btn-block">
 				<span class="glyphicon glyphicon-shopping-cart"></span>
-				 Checkout (2) - $19.25
+				 Checkout ({{ cart.size }}) - {{ cart.subtotal | currency }}
 			</a>
 			<br />
 		</div>

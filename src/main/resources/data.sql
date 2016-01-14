@@ -69,6 +69,14 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		'A product called three with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		79.99,
 		5,
+		4);		
+		
+INSERT INTO Items(name, description, price, rating, imageId) 
+	VALUES(
+		'Zivio 27 Inch LED TV', 
+		'A product called four with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		29.99,
+		5,
 		4);
 
 ----------------------------------

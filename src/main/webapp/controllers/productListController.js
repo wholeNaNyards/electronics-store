@@ -13,6 +13,26 @@ electronicsStore.controller('productListController', function($scope, ProductLis
 		ProductList.changePage(page)
 	};
 
+	$scope.isFirstPage = function() {
+		return ProductList.isFirstPage();
+	}
+	
+	$scope.isLastPage = function() {
+		return ProductList.isLastPage();
+	}
+	
+	$scope.previousPage = function() {
+		ProductList.previousPage();
+	}
+	
+	$scope.nextPage = function() {
+		ProductList.nextPage();
+	}
+	
+	$scope.isCurrentPage = function(page) {
+		return ProductList.isCurrentPage(page);
+	}
+	
 	// Sort AZ button clicked
 	$scope.toggleSortAZ = function() {
 		ProductList.toggleSortAZ();
@@ -21,13 +41,5 @@ electronicsStore.controller('productListController', function($scope, ProductLis
 	// Sort AZ button clicked
 	$scope.toggleSortPrice = function() {
 		ProductList.toggleSortPrice();
-	}
-	
-	$scope.isFirstPageSet = function() {
-		return ProductList.isFirstPageSet();
-	}
-	
-	$scope.isLastPageSet = function() {
-		return ProductList.isLastPageSet();
 	}
 });

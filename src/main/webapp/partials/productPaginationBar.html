@@ -1,27 +1,19 @@
 <nav class="text-center">
 	<ul class="pagination pagination-lg">
-		<li ng-show="!isFirstPageSet()">
-			<a href="#">
+		<li ng-class="{'disabled': isFirstPage()}"
+			ng-click="previousPage()">
+			<a href="#" onClick="return false;">
 				<span>&laquo;</span>
 			</a>
 		</li>
-		<li class="active">
-			<a href="#">1</a>
+		<li ng-repeat="pageNum in productList.pageRange"
+			ng-class="{'active': isCurrentPage(pageNum)}" 
+			ng-click="changePage(pageNum)">
+			<a href="#" onClick="return false;">{{ pageNum }}</a>
 		</li>
-		<li>
-			<a href="#" ng-click="changePage(2)">2</a>
-		</li>
-		<li>
-			<a href="#">3</a>
-		</li>
-		<li>
-			<a href="#">4</a>
-		</li>
-		<li>
-			<a href="#">5</a>
-		</li>
-		<li ng-show="!isLastPageSet()">
-			<a href="#">
+		<li ng-class="{'disabled': isLastPage()}"
+			ng-click="nextPage()">
+			<a href="#" onClick="return false;">
 				<span>&raquo;</span>
 			</a>
 		</li>
