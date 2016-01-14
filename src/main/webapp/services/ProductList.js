@@ -13,6 +13,11 @@ electronicsStore.factory('ProductList', function($http, $q, $filter, productsURL
 	var maxPrice = 1000;
 	var categoryId = 0;
 	
+	// Used to determine current direction of pagination (Next or Previous)
+	// true -- Next
+	// false -- Previous
+	var paginationForward = true;
+	
 	var productList = {};	
 	
 	productList.data = {
@@ -21,12 +26,12 @@ electronicsStore.factory('ProductList', function($http, $q, $filter, productsURL
 		pageRange: [],
 		totalNumProducts: 0,
 		lastPage: 0,
-		sortAZ: false,
+		sortAZ: true,
 		sortPrice: false
 	};
 	
 	productList.loadProducts = function() {
-		loadFactory();
+		loadProducts();
 	};
 	
 	productList.loadProductsFiltered = function(min, max, catId) {
@@ -34,36 +39,41 @@ electronicsStore.factory('ProductList', function($http, $q, $filter, productsURL
 		maxPrice = max;
 		categoryId = catId;
 		
-		loadFactory();
+		productList.data.currentPage = 1;
+		loadProducts();
 	};
 	
 	productList.toggleSortAZ = function() {
 		productList.data.sortAZ = !productList.data.sortAZ;
 		
+		productList.data.currentPage = 1;
+		
 		// Check if all data was brought back, just do client side sort
 		if (productList.data.totalNumProducts <= NUM_PAGES * PRODUCTS_PER_PAGE) {
-			this.allProducts = $filter('orderBy')(this.allProducts, ['name', 'price'], !productList.data.sortAZ);
+			allProducts = $filter('orderBy')(allProducts, ['name', 'price'], !productList.data.sortAZ);
 			updatePagination();
 			loadPage();
 		}
 		else {
 			// Requery
-			loadFactory();
+			loadProducts();
 		}
 	};
 	
 	productList.toggleSortPrice = function() {
 		productList.data.sortPrice = !productList.data.sortPrice;
 		
+		productList.data.currentPage = 1;
+		
 		// Check if all data was brought back, just do client side sort
 		if (productList.data.totalNumProducts <= NUM_PAGES * PRODUCTS_PER_PAGE) {
-			this.allProducts = $filter('orderBy')(this.allProducts, ['price', 'name'], !productList.data.sortPrice);
+			allProducts = $filter('orderBy')(allProducts, ['price', 'name'], !productList.data.sortPrice);
 			updatePagination();
 			loadPage();
 		}
 		else {
 			// Requery
-			loadFactory();
+			loadProducts();
 		}
 	};
 
@@ -84,13 +94,14 @@ electronicsStore.factory('ProductList', function($http, $q, $filter, productsURL
 	
 	productList.previousPage = function() {
 		if (productList.data.currentPage > 1) {
+			paginationForward = false;
 			productList.data.currentPage--;
 			
 			if (isPageInRange(productList.data.currentPage)) {
 				productList.changePage(productList.data.currentPage);
 			}
 			else {
-					loadFactory();
+				loadProducts();
 			}
 		}
 		else {
@@ -100,13 +111,14 @@ electronicsStore.factory('ProductList', function($http, $q, $filter, productsURL
 	
 	productList.nextPage = function() {
 		if (productList.data.currentPage < productList.data.lastPage) {
+			paginationForward = true;
 			productList.data.currentPage++;
 			
 			if (isPageInRange(productList.data.currentPage)) {
 				productList.changePage(productList.data.currentPage);
 			}
 			else {
-				loadFactory();
+				loadProducts();
 			}
 		}
 		else {
@@ -126,35 +138,54 @@ electronicsStore.factory('ProductList', function($http, $q, $filter, productsURL
 		// Calculate last page
 		var lastPage = Math.ceil(productList.data.totalNumProducts / PRODUCTS_PER_PAGE)
 		
-		// Make sure endPage is not out of range
-		var endPage = startPage + NUM_PAGES;
+		if (paginationForward) {
+			var endPage = startPage + NUM_PAGES - 1;
 		
-		if (endPage > lastPage) {
-			endPage = lastPage;
+			// Make sure endPage is not out of range
+			if (endPage > lastPage) {
+				endPage = lastPage;
+			}
+			
+			var i = startPage;
+
+			do {
+				pageRange.push(i);
+				i++;
+			}
+			while (i <= endPage);
 		}
+		else {
+			var endPage = startPage - NUM_PAGES + 1;
 		
-		var i = startPage;
-		
-		do {
-			pageRange.push(i);
-			i++;
+			// Make sure endPage is not out of range
+			if (endPage < 1) {
+				endPage = 1;
+			}
+			
+			var i = endPage;
+
+			do {
+				pageRange.push(i);
+				i++;
+			}
+			while (i <= startPage);
 		}
-		while (i < endPage);
 		
 		productList.data.currentPage = startPage;
 		productList.data.pageRange = pageRange;
 		productList.data.lastPage = lastPage;
 	}
 	
-	function loadFactory() {
-		// IF (!isCartPage)
-			loadProducts();
-		// Else
-			// Cart Stuff
-	}
-	
 	function loadProducts() {
-		var offset = (productList.data.currentPage - 1) * PRODUCTS_PER_PAGE;
+		var offset;
+		
+		if (paginationForward) {
+			offset = (productList.data.currentPage - 1) * PRODUCTS_PER_PAGE;
+		}
+		else {
+			offset = (productList.data.currentPage - NUM_PAGES) * PRODUCTS_PER_PAGE;
+		}
+		
 		var limit = PRODUCTS_PER_PAGE * NUM_PAGES;
 
 		var params = {
@@ -199,9 +230,9 @@ electronicsStore.factory('ProductList', function($http, $q, $filter, productsURL
 		var endIndex = startIndex + PRODUCTS_PER_PAGE;
 		
 		// Make sure endIndex is not out of range
-		var lastItemIndex = this.allProducts.length - 1;
-		if (endIndex > lastItemIndex) {
-			endIndex = lastItemIndex;
+		var lastItem = this.allProducts.length;
+		if (endIndex > lastItem) {
+			endIndex = lastItem;
 		}
 		
 		// Grab entire page worth of items

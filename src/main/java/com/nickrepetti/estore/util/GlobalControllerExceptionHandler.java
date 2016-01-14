@@ -38,6 +38,7 @@ public class GlobalControllerExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public Error generalException(Exception e) {
+		System.out.println(e);
 		return Error.GENERAL;
 	}
 }

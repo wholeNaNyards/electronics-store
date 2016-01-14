@@ -28,7 +28,7 @@ public class JdbcItemRepository implements ItemRepository {
 	// Category specified
 	private final String GET_ALL_ITEMS_WITH_CATEGORY = 
 		"SELECT i.id, i.name, i.description, i.price, "
-		+ "im.id AS imageId, im.name AS imageName, "
+		+ "im.id AS imageId, im.name AS imageName "
 		+ "FROM Items i "
 		+ "INNER JOIN Images im "
 		+ "ON i.imageId = im.id "

@@ -14,7 +14,7 @@ electronicsStore.controller('productListFilterController', function($scope, Cate
 	$scope.minPriceRange = minPriceRange;
 	$scope.minPrice = minPriceRange[0];
 	$scope.maxPriceRange = maxPriceRange;
-	$scope.maxPrice = maxPriceRange[4];
+	$scope.maxPrice = maxPriceRange[8];
 	$scope.categoryId = initialCategoryId;
 	
 	// Event handlers

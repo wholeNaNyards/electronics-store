@@ -17,7 +17,7 @@ electronicsStore.factory('CategoryList', function($http, $q) {
 				id: '1',
 				name: 'Televisions'
 			}, {
-				id: '4',
+				id: '2',
 				name: 'Video Games'
 			}, {
 				id: '3',
