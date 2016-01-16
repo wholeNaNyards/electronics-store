@@ -1,0 +1,10 @@
+<span ng-controller="ProductSortController">
+	<a class="text-muted sort-button" ng-click="toggleSortAZ()">
+		<strong ng-if="productList.sortAZ">A - Z&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
+		<strong ng-if="!productList.sortAZ">Z - A&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
+	</a>
+	<span class="divider-bar text-muted">|</span>
+	<span class="text-muted sort-button" ng-click="toggleSortPrice()">
+		<strong>Price&nbsp;<span class="glyphicon glyphicon-sort"></span></strong>
+	</span>
+</span>

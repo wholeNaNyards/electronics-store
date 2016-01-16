@@ -1,17 +1,17 @@
-<nav class="text-center">
+<nav class="text-center" ng-controller="PaginationController">
 	<ul class="pagination pagination-lg">
-		<li ng-class="{'disabled': isFirstPage()}"
+		<li ng-class="{'disabled': onFirstPage()}"
 			ng-click="previousPage()">
 			<a href="#" onClick="return false;">
 				<span>&laquo;</span>
 			</a>
 		</li>
-		<li ng-repeat="pageNum in productList.pageRange"
+		<li ng-repeat="pageNum in pagination.pageRange"
 			ng-class="{'active': isCurrentPage(pageNum)}" 
 			ng-click="changePage(pageNum)">
 			<a href="#" onClick="return false;">{{ pageNum }}</a>
 		</li>
-		<li ng-class="{'disabled': isLastPage()}"
+		<li ng-class="{'disabled': onLastPage()}"
 			ng-click="nextPage()">
 			<a href="#" onClick="return false;">
 				<span>&raquo;</span>

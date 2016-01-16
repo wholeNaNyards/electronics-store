@@ -1,24 +1,20 @@
-<div class="row" ng-controller="productListController">
+<div class="row" ng-controller="CartPageController">
 	<!-- Sort & Pagination Options -->
 	<div class="col-xs-12">
-		<ng-include src="'../partials/productSortBar.html'"></ng-include>		
-		<strong class="pull-right text-muted">
-			<a class="text-muted sort-button" style="font-size: 18px;" ng-click="previousPage()">&laquo; </a>
-			PAGE {{ productList.currentPage }} OF {{ productList.lastPage }}
-			<a class="text-muted sort-button" style="font-size: 18px;" ng-click="nextPage()"> &raquo;</a>
-		</strong>
+		<ng-include src="'../partials/sortBar.html'"></ng-include>		
+		<ng-include src="'../partials/topPagination.html'"></ng-include>
 	</div>
 	<!-- Products Container -->
 	<div class="col-xs-12">
 		<!-- Individual Product Panel -->
-		<div ng-if="itemInCart(product.id)" class="panel panel-primary border-square" ng-repeat="product in productList.products">
+		<div ng-if="itemInCart(product.id)" class="panel panel-primary border-square" ng-repeat="product in cartList.products">
 			<div class="panel-heading border-square">
 				<strong>{{ product.name }}</strong>
 			</div>
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-xs-12 col-sm-5">
-						<img class="img-responsive center-block" src="image-sm.jpg" />
+						<img class="img-responsive center-block" src="{{ product.image.name }}" />
 						<br />
 					</div>
 					<div class="col-xs-12 col-sm-7">
@@ -46,6 +42,6 @@
 	</div>
 	<!-- Pagination -->
 	<div class="col-xs-12">
-		<ng-include src="'../partials/productPaginationBar.html'"></ng-include>
+		<ng-include src="'../partials/bottomPagination.html'"></ng-include>
 	</div>
 </div>

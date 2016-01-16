@@ -29,11 +29,19 @@ public class UserController {
 		return userRepository.getUser(userId);
 	}
 	
-	@RequestMapping(value="/{userId}/items", method=RequestMethod.POST)
-	public User addToCart(
-		@PathVariable("userId") Long userId,
-		@RequestParam("itemId") Long itemId) {
+	@RequestMapping(value="/{userId}/items/{itemId}", method=RequestMethod.POST)
+	public void addToCart(
+		@PathVariable Long userId,
+		@PathVariable Long itemId) {
 		
-		return userRepository.addToCart(userId, itemId);
+		userRepository.addToCart(userId, itemId);
+	}
+	
+	@RequestMapping(value="/{userId}/items/{itemId}", method=RequestMethod.DELETE)
+	public void removeFromCart(
+		@PathVariable Long userId,
+		@PathVariable Long itemId) {
+		
+		userRepository.removeFromCart(userId, itemId);
 	}
 }

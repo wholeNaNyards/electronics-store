@@ -21,9 +21,9 @@
 					style="margin-bottom: 4px; margin-top: -4px;" 
 					role="search">
 				<div class="input-group" style="padding-right: 15px;">
-					<input type="text" class="form-control" placeholder="Search..." />
+					<input type="text" ng-model="searchVal" class="form-control" placeholder="Search..." />
 					<div class="input-group-btn">
-						<button class="btn btn-default" type="submit">
+						<button ng-click="searchProducts(searchVal)" class="btn btn-default" type="submit">
 							<span class="glyphicon glyphicon-search text-muted"></span>
 						</button>
 					</div>
@@ -46,9 +46,9 @@
 			<div ng-if="isCurrentPage('/products') || isCurrentPage('/')" class="col-sm-6 col-md-7 col-lg-8 hidden-xs" style="margin-top: 8px; margin-left: 15px;">
 				<form class="form-group" style="margin-bottom: 0;" role="search">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search for products...">
+						<input type="text" ng-model="searchVal" class="form-control" placeholder="Search for products...">
 						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
+							<button ng-click="searchProducts(searchVal)" class="btn btn-default" type="submit">
 								<span class="glyphicon glyphicon-search text-muted"></span>
 							</button>
 						</div>

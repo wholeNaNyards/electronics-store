@@ -25,6 +25,7 @@ public class ItemController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Item> getItems(
+		@RequestParam(value="searchValue", defaultValue="") String searchValue, 
 		@RequestParam(value="minPrice", defaultValue="0") int minPrice, 
 		@RequestParam(value="maxPrice", defaultValue="1000") int maxPrice,
 		@RequestParam(value="categoryId", defaultValue="0") int categoryId,
@@ -34,6 +35,7 @@ public class ItemController {
 		@RequestParam(value="offset", defaultValue="0") int offset) {
 		
 		return itemRepository.getItems(
-			minPrice, maxPrice, categoryId, sortAZ, sortPrice, limit, offset);
+			searchValue, minPrice, maxPrice, categoryId,
+			sortAZ, sortPrice, limit, offset);
 	}
 }

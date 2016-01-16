@@ -1,7 +1,8 @@
 package com.nickrepetti.estore.util;
 
-import com.nickrepetti.estore.util.UserNotFoundException;
 import com.nickrepetti.estore.util.Error;
+import com.nickrepetti.estore.util.ItemNotFoundException;
+import com.nickrepetti.estore.util.UserNotFoundException;
 
 import org.springframework.beans.TypeMismatchException;
 
@@ -19,8 +20,14 @@ public class GlobalControllerExceptionHandler {
 	
 	@ExceptionHandler(UserNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public Error spittleNotFound(UserNotFoundException e) {
+	public Error userNotFound(UserNotFoundException e) {
 		return Error.USER_NOT_FOUND;
+	}
+	
+	@ExceptionHandler(ItemNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public Error itemNotFound(ItemNotFoundException e) {
+		return Error.ITEM_NOT_FOUND;
 	}
 	
 	@ExceptionHandler(TypeMismatchException.class)
@@ -32,6 +39,7 @@ public class GlobalControllerExceptionHandler {
 	@ExceptionHandler(MissingServletRequestParameterException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public Error missingParameterException(Exception e) {
+		System.out.println(e);
 		return Error.MISSING_PARAMETER;
 	}
 

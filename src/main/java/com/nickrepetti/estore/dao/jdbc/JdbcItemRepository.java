@@ -5,6 +5,8 @@ import com.nickrepetti.estore.dao.jdbc.mapper.ItemRowMapper;
 
 import com.nickrepetti.estore.model.Item;
 
+import com.nickrepetti.estore.util.ItemNotFoundException;
+
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,12 +20,14 @@ public class JdbcItemRepository implements ItemRepository {
 		+ "FROM Items i "
 		+ "INNER JOIN Images im "
 		+ "ON i.imageId = im.id "
-		+ "WHERE i.price >= ? AND i.price <= ? ";
+		+ "WHERE LOWER(i.name) LIKE '%' || ? || '%' "
+		+ "AND i.price >= ? AND i.price <= ? ";
 		
 	private final String GET_ITEM_COUNT_NO_CATEGORY =
 		"SELECT COUNT(*) "
 		+ "FROM Items i "
-		+ "WHERE i.price >= ? AND i.price <= ?;";
+		+ "WHERE LOWER(i.name) LIKE '%' || ? || '%' "
+		+ "AND i.price >= ? AND i.price <= ?;";
 		
 	// Category specified
 	private final String GET_ALL_ITEMS_WITH_CATEGORY = 
@@ -34,14 +38,16 @@ public class JdbcItemRepository implements ItemRepository {
 		+ "ON i.imageId = im.id "
 		+ "INNER JOIN ItemCategories ic "
 		+ "ON i.id = ic.itemId "
-		+ "WHERE i.price >= ? AND i.price <= ? AND ic.categoryId = ? ";
+		+ "WHERE LOWER(i.name) LIKE '%' || ? || '%' "
+		+ "AND i.price >= ? AND i.price <= ? AND ic.categoryId = ? ";
 		
 	private final String GET_ITEM_COUNT_WITH_CATEGORY = 
 		"SELECT COUNT(*) "
 		+ "FROM Items i "
 		+ "INNER JOIN ItemCategories ic "
 		+ "ON i.id = ic.itemId "
-		+ "WHERE i.price >= ? AND i.price <= ? AND ic.categoryId = ?;";
+		+ "WHERE LOWER(i.name) LIKE '%' || ? || '%' "
+		+ "AND i.price >= ? AND i.price <= ? AND ic.categoryId = ?;";
 		
 	private String SORT_AZ_DESC = "ORDER BY i.name DESC, i.price ";
 	private String SORT_AZ_ASC = "ORDER BY i.name ASC, i.price ";
@@ -56,9 +62,9 @@ public class JdbcItemRepository implements ItemRepository {
 	}
 
 	@Override
-	public List<Item> getItems(int minPrice, int maxPrice, int categoryId, 
-							   boolean sortAZ, boolean sortPrice, int limit,
-							   int offset) {
+	public List<Item> getItems(String searchValue, int minPrice, int maxPrice,
+							   int categoryId, boolean sortAZ, 
+							   boolean sortPrice, int limit, int offset) {
 		List<Item> items;
 		
 		if (categoryId != 0) {
@@ -69,21 +75,27 @@ public class JdbcItemRepository implements ItemRepository {
 			items = jdbcTemplate.query(
 				query, 
 				new ItemRowMapper(),
+				searchValue,
 				minPrice,
 				maxPrice,
 				categoryId,
 				limit,
 				offset);
 		
+			if (items.size() == 0) {
+				throw new ItemNotFoundException();
+			}
+		
 			// Get total item count
 			Integer totalItemCount = 
 				jdbcTemplate.queryForObject(
 					GET_ITEM_COUNT_WITH_CATEGORY, 
 					Integer.class, 
+					searchValue,
 					minPrice,
 					maxPrice,
 					categoryId);
-			
+					
 			// Store total count in first item brought back
 			// TODO: Bring back in Custom Message Converter instead
 			items.get(0).setTotalItemCount(totalItemCount);
@@ -97,19 +109,25 @@ public class JdbcItemRepository implements ItemRepository {
 			items = jdbcTemplate.query(
 				query, 
 				new ItemRowMapper(),
+				searchValue,
 				minPrice,
 				maxPrice,
 				limit,
 				offset);
 			
+			if (items.size() == 0) {
+				throw new ItemNotFoundException();
+			}
+			
 			// Get total item count
 			Integer totalItemCount = 
-				jdbcTemplate.queryForObject(
-					GET_ITEM_COUNT_NO_CATEGORY, 
-					Integer.class, 
-					minPrice,
-					maxPrice);
-			
+			jdbcTemplate.queryForObject(
+				GET_ITEM_COUNT_NO_CATEGORY, 
+				Integer.class, 
+				searchValue,
+				minPrice,
+				maxPrice);
+				
 			// Store total count in first item brought back
 			// TODO: Bring back in Custom Message Converter instead
 			items.get(0).setTotalItemCount(totalItemCount);

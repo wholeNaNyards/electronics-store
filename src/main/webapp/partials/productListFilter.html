@@ -1,4 +1,4 @@
-<div class="row" ng-controller="productListFilterController" style="border-right: 1px solid #DDDDDD;">
+<div class="row" ng-controller="ProductFilterController" style="border-right: 1px solid #DDDDDD;">
 	<!-- Category Filter -->
 	<div class="col-xs-12">
 		<h6>
@@ -8,7 +8,7 @@
 	<div class="col-xs-12">
 		<select class="form-control"
 			ng-model="categoryId"
-			ng-change="filterProducts()" 
+			ng-change="filterCategory(categoryId)" 
 			ng-options="category.id as category.name for category in categoryList.categories">
 		</select>
 	</div>
@@ -23,7 +23,7 @@
 			<div class="input-group-addon">$</div>				
 			<select class="form-control"
 				ng-model="minPrice"
-				ng-change="isValidMin() && filterProducts()"
+				ng-change="isValidMin() && filterMinPrice(minPrice)"
 				ng-options="minPrice for minPrice in minPriceRange">
 			</select>
 		</div>
@@ -39,7 +39,7 @@
 			<div class="input-group-addon">$</div>				
 			<select class="form-control"
 				ng-model="maxPrice"
-				ng-change="isValidMax() && filterProducts()"
+				ng-change="isValidMax() && filterMaxPrice(maxPrice)"
 				ng-options="maxPrice for maxPrice in maxPriceRange">
 			</select>
 		</div>

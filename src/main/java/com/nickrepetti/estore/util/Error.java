@@ -21,7 +21,10 @@ public enum Error {
 	RESOURCE_NOT_FOUND(5, "The resource that you have requested was not found."),
 	
 	// User with given ID not found
-	USER_NOT_FOUND(6, "The resource that you have requested was not found.");
+	USER_NOT_FOUND(6, "The resource that you have requested was not found."),
+	
+	// Requested items were not found
+	ITEM_NOT_FOUND(7, "No items were found matching your request.");
 
 	private final int errorCode;
 	private final String message;

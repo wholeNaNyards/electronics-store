@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="electronicsStore">
+<html lang="en" ng-app="ElectronicsStore">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		
@@ -18,19 +18,24 @@
 		<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.min.js">-->
 		
 		<!-- App Imports -->
-		<script src="controllers/electronicsStore.js"></script>
-		<script src="services/cartFactory.js"></script>
-		<script src="services/CategoryList.js"></script>
-		<script src="services/ProductList.js"></script>
-		<script src="controllers/productListController.js"></script>
-		<script src="controllers/productListFilterController.js"></script>
+		<script src="controllers/ElectronicsStore.js"></script>
+		<script src="services/CartService.js"></script>
+		<script src="services/CategoryService.js"></script>
+		<script src="services/ProductService.js"></script>
+		<script src="services/FilterService.js"></script>
+		<script src="services/PaginationService.js"></script>
+		<script src="controllers/PaginationController.js"></script>
+		<script src="controllers/ProductFilterController.js"></script>
+		<script src="controllers/ProductSortController.js"></script>
+		<script src="controllers/ProductPageController.js"></script>
+		<script src="controllers/CartPageController.js"></script>
 		
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="navbar-custom.css" />
 		
 		<base href="/">
 	</head>
-	<body ng-controller="electronicsStoreController">
+	<body ng-controller="ElectronicsStoreController">
 		<!-- Navbar -->
 		<ng-include src="'partials/navbar.html'"></ng-include>
 		

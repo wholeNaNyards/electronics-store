@@ -1,32 +1,41 @@
-var electronicsStore = angular.module("electronicsStore", ['ngRoute']);
+var electronicsStore = angular.module('ElectronicsStore', ['ngRoute']);
 	
-electronicsStore.controller("electronicsStoreController", function($scope, $location, cartFactory) {	
+electronicsStore.controller('ElectronicsStoreController', 
+	function($scope, $location,
+		CartService, FilterService, PaginationService, ProductService) {
 	
-	$scope.cart = cartFactory.data;
-	
-	cartFactory.loadCart();
+	$scope.cart = CartService.data;
+	CartService.loadCart();
 	
 	$scope.addToCart = function(product) {
-		cartFactory.addToCart(product);
-	}
-
-	$scope.removeFromCart = function(product) {
-		cartFactory.removeFromCart(product);
-	}
-	
-	// Returns true if the product id is in the User's cart
-	$scope.itemInCart = function(productId) {
-		return cartFactory.itemInCart(productId);
+		CartService.addToCart(product);
 	}
 	
 	// Returns true if the User's cart is empty
 	$scope.emptyCart = function() {
-		return cartFactory.emptyCart();
+		return CartService.emptyCart();
 	}
-	
+		
 	// Returns true if page is the current page
 	$scope.isCurrentPage = function(page) {
 		return page === $location.path();
+	}
+		
+	// Returns true if the product id is in the User's cart
+	$scope.itemInCart = function(productId) {
+		return CartService.itemInCart(productId);
+	}
+	
+	$scope.removeFromCart = function(product) {
+		CartService.removeFromCart(product);
+	}
+	
+	$scope.searchProducts = function(searchValue) {
+		FilterService.setSearchValue(searchValue.toLowerCase());
+		
+		var filterObject = FilterService.getFilterObject();
+		
+		ProductService.loadProducts(filterObject);
 	}
 });
 
@@ -35,27 +44,27 @@ electronicsStore.config(function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/home', {
 			templateUrl : 'pages/home.html',
-			controller  : 'electronicsStoreController'
+			controller  : 'ElectronicsStoreController'
 		})
 		
 		.when('/', {
 			templateUrl : 'pages/products.html',
-			controller  : 'electronicsStoreController'
+			controller  : 'ElectronicsStoreController'
 		})
 		
 		.when('/products', {
 			templateUrl : 'pages/products.html',
-			controller  : 'electronicsStoreController'
+			controller  : 'ElectronicsStoreController'
 		})
 
 		.when('/cart', {
 			templateUrl : 'pages/cart.html',
-			controller  : 'electronicsStoreController'
+			controller  : 'ElectronicsStoreController'
 		})
 		
 		.when('/underConstruction', {
 			templateUrl : 'pages/underConstruction.html',
-			controller  : 'electronicsStoreController'
+			controller  : 'ElectronicsStoreController'
 		})
 		
 		.otherwise({
@@ -66,3 +75,5 @@ electronicsStore.config(function($routeProvider, $locationProvider) {
 });
 
 electronicsStore.constant("productsURL", "http://localhost:8080/items");
+electronicsStore.constant("categoriesURL", "http://localhost:8080/categories");
+electronicsStore.constant("usersURL", "http://localhost:8080/users");

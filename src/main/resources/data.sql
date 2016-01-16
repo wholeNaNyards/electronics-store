@@ -30,19 +30,23 @@ INSERT INTO Users(firstName, lastName, username)
 ----------------------------------
 INSERT INTO Images(name)
 	VALUES(
-		'imageOne.jpg');
+		'video-game-sm.jpg');
 
 INSERT INTO Images(name)
 	VALUES(
-		'imageTwo.jpg');
+		'ipod-headphones-sm.jpg');
 
 INSERT INTO Images(name)
 	VALUES(
-		'imageThree.jpg');
+		'beats-by-dre-sm.jpg');
 
 INSERT INTO Images(name)
 	VALUES(
-		'imageFour.jpg');
+		'television-sm.jpg');
+		
+INSERT INTO Images(name)
+	VALUES(
+		'headphones-sm.jpg');
 
 ----------------------------------
 ------ Items Table Inserts -------
@@ -237,7 +241,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		'A product called twenty-four with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		59.99,
 		5,
-		2);
+		5);
 
 INSERT INTO Items(name, description, price, rating, imageId) 
 	VALUES(
@@ -253,7 +257,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		'A product called twenty-six with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		124.99,
 		2,
-		2);
+		3);
 		
 INSERT INTO Items(name, description, price, rating, imageId) 
 	VALUES(
@@ -261,7 +265,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		'A product called twenty-seven with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		429.99,
 		5,
-		2);		
+		5);		
 		
 INSERT INTO Items(name, description, price, rating, imageId) 
 	VALUES(
@@ -269,42 +273,18 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		'A product called twenty-eight with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		329.99,
 		5,
-		2);
+		5);
 
 
 ----------------------------------
 ---- UserItems Table Inserts -----
 ----------------------------------
-INSERT INTO UserItems(userId, itemId, quantity) 
-	VALUES(
-		1,
-		1,
-		1);
-		
-INSERT INTO UserItems(userId, itemId, quantity) 
-	VALUES(
-		1,
-		2,
-		1);
-		
-INSERT INTO UserItems(userId, itemId, quantity) 
-	VALUES(
-		2,
-		3,
-		2);
-		
-INSERT INTO UserItems(userId, itemId, quantity) 
-	VALUES(
-		2,
-		1,
-		2);
-		
-INSERT INTO UserItems(userId, itemId, quantity) 
-	VALUES(
-		3,
-		1,
-		2);
-		
+--INSERT INTO UserItems(userId, itemId, quantity) 
+--	VALUES(
+--		1,
+--		1,
+--		1);
+
 ----------------------------------
 ---- Categories Table Inserts ----
 ----------------------------------

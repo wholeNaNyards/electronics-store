@@ -26,6 +26,11 @@ public class JdbcUserRepository implements UserRepository {
 		"INSERT INTO UserItems(userId, itemId, quantity) "
 		+ "VALUES(?, ?, ?)";
 		
+	private final String REMOVE_FROM_CART = 
+		"DELETE FROM UserItems ui "
+		+ "WHERE ui.userId = ? "
+		+ "AND ui.itemId = ?;";
+		
 	private final String UPDATE_CART = 
 		"UPDATE UserItems "
 		+ "SET quantity = quantity + 1 "
@@ -52,7 +57,7 @@ public class JdbcUserRepository implements UserRepository {
 	}
 	
 	@Override
-	public User addToCart(Long userId, Long itemId) {
+	public void addToCart(Long userId, Long itemId) {
 		try {
 			// Attempt to create record
 			jdbcTemplate.update(
@@ -70,7 +75,14 @@ public class JdbcUserRepository implements UserRepository {
 			UPDATE_CART, 
 			userId,
 			itemId);
-				
-		return getUser(userId);
+	}
+	
+		
+	@Override
+	public void removeFromCart(Long userId, Long itemId) {
+		jdbcTemplate.update(
+			REMOVE_FROM_CART, 
+			userId,
+			itemId);
 	}
 }

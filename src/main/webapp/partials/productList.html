@@ -1,52 +1,57 @@
-<div class="row" ng-controller="productListController">
-	<!-- Sort & Pagination Options -->
-	<div class="col-xs-12">
-		<ng-include src="'../partials/productSortBar.html'"></ng-include>		
-		<strong class="pull-right text-muted">
-			<a class="text-muted sort-button" style="font-size: 18px;" ng-click="previousPage()">&laquo; </a>
-			PAGE {{ productList.currentPage }} OF {{ productList.lastPage }}
-			<a class="text-muted sort-button" style="font-size: 18px;" ng-click="nextPage()"> &raquo;</a>
-		</strong>
-	</div>
-	<!-- Products Container -->
-	<div class="col-xs-12">
-		<!-- Individual Product Panel -->
-		<div class="panel panel-primary border-square" ng-repeat="product in productList.products">
-			<div class="panel-heading border-square">
-				<strong>{{ product.name }}</strong>
-			</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="col-xs-12 col-sm-5">
-						<img class="img-responsive center-block" src="image-sm.jpg" />
-						<br />
-					</div>
-					<div class="col-xs-12 col-sm-7">
-						<p>{{ product.description }}</p>
-					</div>
+<div class="row" ng-controller="ProductPageController">
+	<span ng-if="!productList.error">
+		<!-- Sort & Pagination Options -->
+		<div class="col-xs-12">
+			<ng-include src="'../partials/sortBar.html'"></ng-include>		
+			<ng-include src="'../partials/topPagination.html'"></ng-include>
+		</div>
+		<!-- Products Container -->
+		<div class="col-xs-12">
+			<!-- Individual Product Panel -->
+			<div class="panel panel-primary border-square" ng-repeat="product in productList.products">
+				<div class="panel-heading border-square">
+					<strong>{{ product.name }}</strong>
 				</div>
-				<div class="row">
-					<div class="col-xs-4 col-sm-5">
-						<hr style="border-color: #DDDDFF !important;" />
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-12 col-sm-5">
+							<img class="img-responsive center-block" src="{{ product.image.name }}" />
+							<br />
+						</div>
+						<div class="col-xs-12 col-sm-7">
+							<p>{{ product.description }}</p>
+						</div>
 					</div>
-					<div class="col-xs-4 col-sm-2">
-						<h4 class="text-center text-danger">
-							<strong>{{ product.price | currency }}</strong>
-						</h4>
-					</div>
-					<div class="col-xs-4 col-sm-5">
-						<hr style="border-color: #DDDDFF !important;" />
-					</div>
-					<div class="col-xs-12 col-md-8 col-md-offset-2">
-						<button ng-if="!itemInCart(product.id)" ng-click="addToCart(product)" class="btn btn-warning btn-block">Add to Cart</button>
-						<button ng-if="itemInCart(product.id)" ng-click="removeFromCart(product)" class="btn btn-danger btn-block">Remove from Cart</button>
+					<div class="row">
+						<div class="col-xs-4 col-sm-5">
+							<hr style="border-color: #DDDDFF !important;" />
+						</div>
+						<div class="col-xs-4 col-sm-2">
+							<h4 class="text-center text-danger">
+								<strong>{{ product.price | currency }}</strong>
+							</h4>
+						</div>
+						<div class="col-xs-4 col-sm-5">
+							<hr style="border-color: #DDDDFF !important;" />
+						</div>
+						<div class="col-xs-12 col-md-8 col-md-offset-2">
+							<button ng-if="!itemInCart(product.id)" ng-click="addToCart(product)" class="btn btn-warning btn-block">Add to Cart</button>
+							<button ng-if="itemInCart(product.id)" ng-click="removeFromCart(product)" class="btn btn-danger btn-block">Remove from Cart</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- Pagination -->
-	<div class="col-xs-12">
-		<ng-include src="'../partials/productPaginationBar.html'"></ng-include>
+		<!-- Pagination -->
+		<div class="col-xs-12">
+			<ng-include src="'../partials/bottomPagination.html'"></ng-include>
+		</div>
+	</span>
+	<!-- Errors Found -->
+	<div ng-if="productList.error" class="col-xs-12">
+		<div class="jumbotron" style="padding-left: 50px;">
+			<h1>Oh no!</h1>
+			<p>{{ productList.errorMsg }}</p>
+		</div>
 	</div>
 </div>
