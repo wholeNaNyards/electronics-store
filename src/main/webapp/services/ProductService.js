@@ -1,7 +1,7 @@
 var electronicsStore = angular.module('ElectronicsStore');
 
 electronicsStore.factory('ProductService', 
-	function($http, PaginationService, productsURL) {
+	function($http, PaginationService, productsURL, usersURL) {
 	
 	this.allProducts = [];
 	this.totalNumProducts = 0,
@@ -41,28 +41,33 @@ electronicsStore.factory('ProductService',
 		
 		var me = this;
 		
+		var queryURL = '';
+		
 		if (!me.loadCart) {
-			$http.get(productsURL, {params: filter})
-			.success(function (data) {
-				me.allProducts = data;
-				me.totalNumProducts = me.allProducts[0].totalItemCount;
-				
-				service.updateProducts();
-				
-				service.data.error = false;
-				service.data.errorMsg = '';
-				
-				PaginationService.updatePagination(
-					me.totalNumProducts, page, paginationForward);
-			})
-			.error(function (error) {
-				service.data.error = true;
-				service.data.errorMsg = error.message;
-			});
+			queryURL = productsURL;
 		}
 		else {
-			// AJAX Load Cart Products
+			// Hard code to default user with id = 1
+			queryURL = usersURL + '/1/items';
 		}
+		
+		$http.get(queryURL, {params: filter})
+		.success(function (data) {
+			me.allProducts = data;
+			me.totalNumProducts = me.allProducts[0].totalItemCount;
+			
+			service.updateProducts();
+			
+			service.data.error = false;
+			service.data.errorMsg = '';
+			
+			PaginationService.updatePagination(
+				me.totalNumProducts, page, paginationForward);
+		})
+		.error(function (error) {
+			service.data.error = true;
+			service.data.errorMsg = error.message;
+		});
 	};
 	
 	service.setAllProducts = function(allProducts) {
