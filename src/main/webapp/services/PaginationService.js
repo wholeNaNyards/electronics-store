@@ -12,6 +12,12 @@ electronicsStore.factory('PaginationService', function() {
 		pageRange: [],
 		lastPage: 0
 	};
+
+	service.init = function() {
+		service.data.currentPage = 1;
+		service.data.pageRange = [];
+		service.data.lastPage = 0;
+	};
 	
 	service.calculateLastPage = function(totalNumItems) {
 		return Math.ceil(totalNumItems / ITEMS_PER_PAGE);

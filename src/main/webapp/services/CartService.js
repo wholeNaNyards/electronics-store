@@ -64,6 +64,10 @@ electronicsStore.factory('CartService', function($http, usersURL) {
 			});
 	};
 
+	service.setSubtotal = function(subtotal) {
+		service.data.subtotal = subtotal;
+	};
+	
 	service.updateCart = function() {
 		service.data.size = 0;
 		

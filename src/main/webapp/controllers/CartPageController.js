@@ -7,6 +7,7 @@ electronicsStore.controller('CartPageController',
 	
 	// Initial page load
 	FilterService.init();
+	PaginationService.init();
 	ProductService.setLoadCart(true);
 	var filterObject = FilterService.getFilterObject();
 	ProductService.loadProducts(filterObject);

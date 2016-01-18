@@ -1,7 +1,7 @@
 var electronicsStore = angular.module('ElectronicsStore');
 
 electronicsStore.factory('ProductService', 
-	function($http, PaginationService, productsURL, usersURL) {
+	function($http, CartService, PaginationService, productsURL, usersURL) {
 	
 	this.allProducts = [];
 	this.totalNumProducts = 0,
@@ -41,33 +41,48 @@ electronicsStore.factory('ProductService',
 		
 		var me = this;
 		
-		var queryURL = '';
-		
 		if (!me.loadCart) {
-			queryURL = productsURL;
+			$http.get(productsURL, {params: filter})
+			.success(function (data) {
+				me.allProducts = data;
+				me.totalNumProducts = me.allProducts[0].totalItemCount;
+				
+				service.updateProducts();
+				
+				service.data.error = false;
+				service.data.errorMsg = '';
+				
+				PaginationService.updatePagination(
+					me.totalNumProducts, page, paginationForward);
+			})
+			.error(function (error) {
+				service.data.error = true;
+				service.data.errorMsg = error.message;
+			});
 		}
 		else {
 			// Hard code to default user with id = 1
-			queryURL = usersURL + '/1/items';
+			$http.get(usersURL + '/1/items', {params: filter})
+			.success(function (data) {
+				me.allProducts = data;
+				
+				var firstItem = me.allProducts[0];
+				me.totalNumProducts = firstItem.totalItemCount;
+				
+				CartService.setSubtotal(firstItem.subtotal);
+				service.updateProducts();
+				
+				service.data.error = false;
+				service.data.errorMsg = '';
+				
+				PaginationService.updatePagination(
+					me.totalNumProducts, page, paginationForward);
+			})
+			.error(function (error) {
+				service.data.error = true;
+				service.data.errorMsg = error.message;
+			});
 		}
-		
-		$http.get(queryURL, {params: filter})
-		.success(function (data) {
-			me.allProducts = data;
-			me.totalNumProducts = me.allProducts[0].totalItemCount;
-			// SUBTOTAL
-			service.updateProducts();
-			
-			service.data.error = false;
-			service.data.errorMsg = '';
-			
-			PaginationService.updatePagination(
-				me.totalNumProducts, page, paginationForward);
-		})
-		.error(function (error) {
-			service.data.error = true;
-			service.data.errorMsg = error.message;
-		});
 	};
 	
 	service.setAllProducts = function(allProducts) {
