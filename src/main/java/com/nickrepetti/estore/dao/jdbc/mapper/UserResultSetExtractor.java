@@ -27,12 +27,12 @@ public class UserResultSetExtractor implements ResultSetExtractor<User> {
 
 		// Grab first cart item. Value of 0 means column was NULL
 		if (firstItemId != 0) {
-			cart.put(firstItemId, rs.getInt("quantity"));
+			cart.put(firstItemId, 1);
 		}
 		
 		// Get the rest of the items from User's cart.
 		while (rs.next()) {
-			cart.put(rs.getLong("itemId"), rs.getInt("quantity"));
+			cart.put(rs.getLong("itemId"), 1);
 		}
 		
 		user.setCart(cart);

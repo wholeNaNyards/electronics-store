@@ -55,7 +55,7 @@ electronicsStore.factory('ProductService',
 		.success(function (data) {
 			me.allProducts = data;
 			me.totalNumProducts = me.allProducts[0].totalItemCount;
-			
+			// SUBTOTAL
 			service.updateProducts();
 			
 			service.data.error = false;

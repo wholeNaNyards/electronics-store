@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ItemRepository {
 	
-	public List<Item> getItems(String searchValue, int minPrice, int maxPrice, int categoryId, 
-							   boolean sortAZ, boolean sortPrice, int limit,
-							   int offset);
+	public List<Item> getItems(String searchValue, int minPrice, int maxPrice,
+							   int categoryId, boolean sortAZ, 
+							   boolean sortPrice, int limit, int offset);
 }

@@ -96,7 +96,7 @@ public class JdbcItemRepository implements ItemRepository {
 					maxPrice,
 					categoryId);
 					
-			// Store total count in first item brought back
+			// Place total count in first item brought back
 			// TODO: Bring back in Custom Message Converter instead
 			items.get(0).setTotalItemCount(totalItemCount);
 		}

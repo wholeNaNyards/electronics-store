@@ -24,7 +24,10 @@ public enum Error {
 	USER_NOT_FOUND(6, "The resource that you have requested was not found."),
 	
 	// Requested items were not found
-	ITEM_NOT_FOUND(7, "No items were found matching your request.");
+	ITEM_NOT_FOUND(7, "No items were found matching your request."),
+
+	// Requested items were not found
+	EMPTY_CART(8, "No items were found in your cart.");
 
 	private final int errorCode;
 	private final String message;

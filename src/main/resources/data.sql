@@ -279,9 +279,8 @@ INSERT INTO Items(name, description, price, rating, imageId)
 ----------------------------------
 ---- UserItems Table Inserts -----
 ----------------------------------
---INSERT INTO UserItems(userId, itemId, quantity) 
+--INSERT INTO UserItems(userId, itemId) 
 --	VALUES(
---		1,
 --		1,
 --		1);
 

@@ -30,6 +30,12 @@ public class GlobalControllerExceptionHandler {
 		return Error.ITEM_NOT_FOUND;
 	}
 	
+	@ExceptionHandler(EmptyCartException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public Error emptyCart(EmptyCartException e) {
+		return Error.EMPTY_CART;
+	}
+	
 	@ExceptionHandler(TypeMismatchException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public Error typeMismatchException(Exception e) {

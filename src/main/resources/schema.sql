@@ -30,7 +30,6 @@ CREATE TABLE Items (
 CREATE TABLE UserItems (
 	userId INTEGER NOT NULL,
 	itemId INTEGER NOT NULL,
-	quantity INTEGER NOT NULL,
 	FOREIGN KEY (userId) REFERENCES Users(id),
 	FOREIGN KEY (itemId) REFERENCES Items(id),
 	PRIMARY KEY (userId, itemId)

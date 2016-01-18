@@ -20,6 +20,7 @@ public class Item {
 	private BigDecimal price;
 	private int rating;
 	private int totalItemCount;
+	private int subtotal;
 	private Image image;
 	
 	// Item's list of categories that it belongs to
@@ -73,6 +74,14 @@ public class Item {
 	
 	public void setTotalItemCount(int totalItemCount) {
 		this.totalItemCount = totalItemCount;
+	}
+	
+	public int getSubtotal() {
+		return subtotal;
+	}
+	
+	public void setSubtotal(int subtotal) {
+		this.subtotal = subtotal;
 	}
 	
 	public Image getImage() {
