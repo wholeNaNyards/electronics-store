@@ -1,11 +1,11 @@
 package com.nickrepetti.estore.config.root;
 
 import com.nickrepetti.estore.dao.CategoryRepository;
-import com.nickrepetti.estore.dao.ItemRepository;
+import com.nickrepetti.estore.dao.ProductRepository;
 import com.nickrepetti.estore.dao.UserRepository;
 
 import com.nickrepetti.estore.dao.jdbc.JdbcCategoryRepository;
-import com.nickrepetti.estore.dao.jdbc.JdbcItemRepository;
+import com.nickrepetti.estore.dao.jdbc.JdbcProductRepository;
 import com.nickrepetti.estore.dao.jdbc.JdbcUserRepository;
 
 import javax.sql.DataSource;
@@ -41,8 +41,8 @@ public class JdbcConfig {
 	}
 	
 	@Bean
-	public ItemRepository getItemRepository(JdbcTemplate jdbcTemplate) {
-		return new JdbcItemRepository(jdbcTemplate);
+	public ProductRepository getProductRepository(JdbcTemplate jdbcTemplate) {
+		return new JdbcProductRepository(jdbcTemplate);
 	}
 	
 	@Bean

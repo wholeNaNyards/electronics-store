@@ -11,7 +11,7 @@ electronicsStore.controller('ProductSortController',
 			
 		ProductService.setAllProducts(allProducts);
 		
-		var products = PaginationService.getPageOfItems(allProducts);
+		var products = PaginationService.getPageOfProducts(allProducts);
 		ProductService.setProducts(products);
 	};
 
@@ -28,7 +28,7 @@ electronicsStore.controller('ProductSortController',
 			
 		ProductService.setAllProducts(allProducts);
 		
-		var products = PaginationService.getPageOfItems(allProducts);
+		var products = PaginationService.getPageOfProducts(allProducts);
 		ProductService.setProducts(products);
 	};
 	

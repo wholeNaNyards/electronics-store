@@ -49,9 +49,9 @@ INSERT INTO Images(name)
 		'headphones-sm.jpg');
 
 ----------------------------------
------- Items Table Inserts -------
+------ Products Table Inserts -------
 ----------------------------------
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Zivio 55 Inch LED TV', 
 		'A product called one with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -59,7 +59,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		4,
 		4);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Massung 42 Inch LED Smart TV', 
 		'A product called two with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -67,7 +67,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		2,
 		4);
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'GL 30 Inch LED TV', 
 		'A product called three with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -75,7 +75,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		4);		
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Zivio 27 Inch LED TV', 
 		'A product called four with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -83,7 +83,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		4);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Zivio 25 Inch LED TV', 
 		'A product called five with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -91,7 +91,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		4,
 		4);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Massung 24 Inch LED Smart TV', 
 		'A product called six with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -99,7 +99,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		2,
 		4);
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'GL 48 Inch LED TV', 
 		'A product called seven with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -107,7 +107,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		4);		
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Zivio 70 Inch LED TV', 
 		'A product called eight with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -115,7 +115,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		4);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Zivio 42 Inch LED TV', 
 		'A product called nine with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -123,7 +123,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		4,
 		4);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Massung 40 Inch LED Smart TV', 
 		'A product called ten with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -131,7 +131,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		2,
 		4);
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'GL 55 Inch LED TV', 
 		'A product called eleven with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -139,7 +139,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		4);		
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Zivio 36 Inch LED TV', 
 		'A product called twelve with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -147,7 +147,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		4);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Zivio 41 Inch LED TV', 
 		'A product called thirteen with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -155,7 +155,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		4,
 		4);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Call of Duty Black Ops', 
 		'A product called fourteen with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -163,7 +163,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		2,
 		1);
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Call of Duty Black Ops 2', 
 		'A product called fifteen with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -171,7 +171,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		1);		
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Call of Duty Black Ops 3', 
 		'A product called sixteen with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -179,7 +179,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		1);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Call of Duty Modern Warfare', 
 		'A product called seventeen with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -187,7 +187,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		4,
 		1);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Call of Duty Modern Warfare 2', 
 		'A product called eighteen with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -195,7 +195,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		2,
 		1);
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Call of Duty Modern Warfare 3', 
 		'A product called nineteen with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -203,7 +203,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		1);		
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Super Meat Boy', 
 		'A product called twenty with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -211,7 +211,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		1);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'The Elder Scrolls - Skyrim', 
 		'A product called twenty-one with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -219,7 +219,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		4,
 		1);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'The Elder Scrolls Online', 
 		'A product called twenty-two with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -227,7 +227,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		2,
 		1);
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'The Witcher 3 - Wild Hunt', 
 		'A product called twenty-three with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -235,7 +235,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		1);		
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Turtle Beach Headphones', 
 		'A product called twenty-four with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -243,7 +243,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		5);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Ipod Headphones',
 		'A product called twenty-five with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -251,7 +251,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		4,
 		2);
 
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Beats by Dre', 
 		'A product called twenty-six with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -259,7 +259,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		2,
 		3);
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Samsung Surround Sound 7.1', 
 		'A product called twenty-seven with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -267,7 +267,7 @@ INSERT INTO Items(name, description, price, rating, imageId)
 		5,
 		5);		
 		
-INSERT INTO Items(name, description, price, rating, imageId) 
+INSERT INTO Products(name, description, price, rating, imageId) 
 	VALUES(
 		'Samsung Surround Sound 5.1', 
 		'A product called twenty-eight with a very long description about something about the product. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -277,9 +277,9 @@ INSERT INTO Items(name, description, price, rating, imageId)
 
 
 ----------------------------------
----- UserItems Table Inserts -----
+---- UserProducts Table Inserts -----
 ----------------------------------
---INSERT INTO UserItems(userId, itemId) 
+--INSERT INTO UserProducts(userId, productId) 
 --	VALUES(
 --		1,
 --		1);
@@ -300,144 +300,144 @@ INSERT INTO Categories(name)
 		'Audio');
 		
 ----------------------------------
--- ItemCategories Table Inserts --
+-- ProductCategories Table Inserts --
 ----------------------------------
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		1,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		2,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		3,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		4,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		5,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		6,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		7,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		8,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		9,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		10,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		11,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		12,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		13,
 		1);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		14,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		15,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		16,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		17,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		18,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		19,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		20,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		21,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		22,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		23,
 		2);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		24,
 		3);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		25,
 		3);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		26,
 		3);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		27,
 		3);
 		
-INSERT INTO ItemCategories(itemId, categoryId) 
+INSERT INTO ProductCategories(productId, categoryId) 
 	VALUES(
 		28,
 		3);

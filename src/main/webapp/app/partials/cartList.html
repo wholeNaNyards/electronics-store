@@ -1,20 +1,20 @@
 <div class="row" ng-controller="CartPageController">
 	<!-- Sort & Pagination Options -->
 	<div class="col-xs-12">
-		<ng-include src="'../partials/sortBar.html'"></ng-include>		
-		<ng-include src="'../partials/topPagination.html'"></ng-include>
+		<ng-include src="'app/partials/sortBar.html'"></ng-include>		
+		<ng-include src="'app/partials/topPagination.html'"></ng-include>
 	</div>
 	<!-- Products Container -->
 	<div class="col-xs-12">
 		<!-- Individual Product Panel -->
-		<div ng-if="itemInCart(product.id)" class="panel panel-primary border-square" ng-repeat="product in cartList.products">
+		<div ng-if="productInCart(product.id)" class="panel panel-primary border-square" ng-repeat="product in cartList.products">
 			<div class="panel-heading border-square">
 				<strong>{{ product.name }}</strong>
 			</div>
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-xs-12 col-sm-5">
-						<img class="img-responsive center-block" src="{{ product.image.name }}" />
+						<img class="img-responsive center-block" src="{{ 'assets/img/' + product.image.name }}" />
 						<br />
 					</div>
 					<div class="col-xs-12 col-sm-7">
@@ -34,7 +34,7 @@
 						<hr style="border-color: #DDDDFF !important;" />
 					</div>
 					<div class="col-xs-12 col-md-8 col-md-offset-2">
-						<button ng-if="itemInCart(product.id)" ng-click="removeFromCart(product)" class="btn btn-danger btn-block">Remove from Cart</button>
+						<button ng-if="productInCart(product.id)" ng-click="removeFromCart(product)" class="btn btn-danger btn-block">Remove from Cart</button>
 					</div>
 				</div>
 			</div>
@@ -42,6 +42,6 @@
 	</div>
 	<!-- Pagination -->
 	<div class="col-xs-12">
-		<ng-include src="'../partials/bottomPagination.html'"></ng-include>
+		<ng-include src="'app/partials/bottomPagination.html'"></ng-include>
 	</div>
 </div>

@@ -2,7 +2,7 @@ package com.nickrepetti.estore.controller;
 
 import com.nickrepetti.estore.dao.UserRepository;
 
-import com.nickrepetti.estore.model.Item;
+import com.nickrepetti.estore.model.Product;
 import com.nickrepetti.estore.model.User;
 
 import java.util.List;
@@ -33,31 +33,31 @@ public class UserController {
 		return userRepository.getUser(userId);
 	}
 	
-	@RequestMapping(value = "/{userId}/items", method = RequestMethod.GET)
-	public List<Item> getCartItems(
+	@RequestMapping(value = "/{userId}/products", method = RequestMethod.GET)
+	public List<Product> getCartProducts(
 		@PathVariable Long userId,
 		@RequestParam(value="sortAZ", defaultValue="false") boolean sortAZ,
 		@RequestParam(value="sortPrice", defaultValue="false") boolean sortPrice,
 		@RequestParam(value="limit", defaultValue="20") int limit,
 		@RequestParam(value="offset", defaultValue="0") int offset) {
 		
-		return userRepository.getCartItems(
+		return userRepository.getCartProducts(
 			userId, sortAZ, sortPrice, limit, offset);
 	}
 	
-	@RequestMapping(value="/{userId}/items/{itemId}", method=RequestMethod.POST)
+	@RequestMapping(value="/{userId}/products/{productId}", method=RequestMethod.POST)
 	public void addToCart(
 		@PathVariable Long userId,
-		@PathVariable Long itemId) {
+		@PathVariable Long productId) {
 		
-		userRepository.addToCart(userId, itemId);
+		userRepository.addToCart(userId, productId);
 	}
 	
-	@RequestMapping(value="/{userId}/items/{itemId}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/{userId}/products/{productId}", method=RequestMethod.DELETE)
 	public void removeFromCart(
 		@PathVariable Long userId,
-		@PathVariable Long itemId) {
+		@PathVariable Long productId) {
 		
-		userRepository.removeFromCart(userId, itemId);
+		userRepository.removeFromCart(userId, productId);
 	}
 }

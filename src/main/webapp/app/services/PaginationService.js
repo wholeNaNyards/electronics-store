@@ -2,7 +2,7 @@ var electronicsStore = angular.module('ElectronicsStore');
 
 electronicsStore.factory('PaginationService', function() {
 
-	var ITEMS_PER_PAGE = 4;
+	var PRODUCTS_PER_PAGE = 4;
 	var PAGE_RANGE = 5;
 
 	var service = {};	
@@ -19,18 +19,18 @@ electronicsStore.factory('PaginationService', function() {
 		service.data.lastPage = 0;
 	};
 	
-	service.calculateLastPage = function(totalNumItems) {
-		return Math.ceil(totalNumItems / ITEMS_PER_PAGE);
+	service.calculateLastPage = function(totalNumProducts) {
+		return Math.ceil(totalNumProducts / PRODUCTS_PER_PAGE);
 	};
 	
 	service.calculateOffset = function(page, paginationForward) {
 		var offset;
 		
 		if (paginationForward) {
-			offset = (page - 1) * ITEMS_PER_PAGE;
+			offset = (page - 1) * PRODUCTS_PER_PAGE;
 		}
 		else {
-			offset = (page - PAGE_RANGE) * ITEMS_PER_PAGE;
+			offset = (page - PAGE_RANGE) * PRODUCTS_PER_PAGE;
 		}
 		
 		return offset;
@@ -73,28 +73,28 @@ electronicsStore.factory('PaginationService', function() {
 		return service.data.currentPage;
 	};
 	
-	service.getPageOfItems = function(itemsArr, page) {
+	service.getPageOfProducts = function(productsArr, page) {
 		page = typeof page !== 'undefined' ? page : 1;
 		
-		var pageOfItems = [];
+		var pageOfProducts = [];
 	
 		// Maps page to page range
-		var startIndex = ((page - 1) % PAGE_RANGE) * ITEMS_PER_PAGE;
+		var startIndex = ((page - 1) % PAGE_RANGE) * PRODUCTS_PER_PAGE;
 		
-		var endIndex = startIndex + ITEMS_PER_PAGE;
+		var endIndex = startIndex + PRODUCTS_PER_PAGE;
 		
 		// Make sure endIndex is not out of range
-		var lastItem = itemsArr.length;
-		if (endIndex > lastItem) {
-			endIndex = lastItem;
+		var lastProduct = productsArr.length;
+		if (endIndex > lastProduct) {
+			endIndex = lastProduct;
 		}
 		
-		// Grab entire page worth of items
+		// Grab entire page worth of products
 		for (var i = startIndex; i < endIndex; i++) {
-			pageOfItems.push(itemsArr[i]);
+			pageOfProducts.push(productsArr[i]);
 		}
 		
-		return pageOfItems;
+		return pageOfProducts;
 	};
 	
 	service.isCurrentPage = function(page) {
@@ -126,16 +126,15 @@ electronicsStore.factory('PaginationService', function() {
 	};
 	
 	service.updatePagination = 
-		function(totalNumItems, startPage, paginationForward) {
+		function(totalNumProducts, startPage, paginationForward) {
 			
-		startPage = typeof startPage !== 'undefined' ? 
-			startPage : service.data.currentPage;
+		startPage = typeof startPage !== 'undefined' ? startPage : 1;
 		
 		paginationForward = typeof paginationForward !== 'undefined' ? 
 			paginationForward : true;
 		
 		// Calculate last page
-		var lastPage = service.calculateLastPage(totalNumItems);
+		var lastPage = service.calculateLastPage(totalNumProducts);
 		
 		var pageRange = 
 			service.calculatePageRange(startPage, lastPage, paginationForward);

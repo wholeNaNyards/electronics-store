@@ -23,16 +23,16 @@ public class UserResultSetExtractor implements ResultSetExtractor<User> {
 		
 		Map<Long, Integer> cart = new HashMap<Long, Integer>();
 		
-		Long firstItemId = rs.getLong("itemId");
+		Long firstProductId = rs.getLong("productId");
 
-		// Grab first cart item. Value of 0 means column was NULL
-		if (firstItemId != 0) {
-			cart.put(firstItemId, 1);
+		// Grab first cart product. Value of 0 means column was NULL
+		if (firstProductId != 0) {
+			cart.put(firstProductId, 1);
 		}
 		
-		// Get the rest of the items from User's cart.
+		// Get the rest of the products from User's cart.
 		while (rs.next()) {
-			cart.put(rs.getLong("itemId"), 1);
+			cart.put(rs.getLong("productId"), 1);
 		}
 		
 		user.setCart(cart);

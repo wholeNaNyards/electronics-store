@@ -12,32 +12,15 @@
 		<!-- Bootstrap Optional Themes CSS CDN -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" 
 		integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous" />
-		<!-- AngularJS CDN -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-		<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.min.js">-->
-		
-		<!-- App Imports -->
-		<script src="controllers/ElectronicsStore.js"></script>
-		<script src="services/CartService.js"></script>
-		<script src="services/CategoryService.js"></script>
-		<script src="services/ProductService.js"></script>
-		<script src="services/FilterService.js"></script>
-		<script src="services/PaginationService.js"></script>
-		<script src="controllers/PaginationController.js"></script>
-		<script src="controllers/ProductFilterController.js"></script>
-		<script src="controllers/ProductSortController.js"></script>
-		<script src="controllers/ProductPageController.js"></script>
-		<script src="controllers/CartPageController.js"></script>
-		
-		<link rel="stylesheet" href="style.css" />
-		<link rel="stylesheet" href="navbar-custom.css" />
+
+		<link rel="stylesheet" href="assets/css/style.css" />
+		<link rel="stylesheet" href="assets/css/navbar-custom.css" />
 		
 		<base href="/">
 	</head>
-	<body ng-controller="ElectronicsStoreController">
+	<body ng-controller="MainController">
 		<!-- Navbar -->
-		<ng-include src="'partials/navbar.html'"></ng-include>
+		<ng-include src="'app/partials/navbar.html'"></ng-include>
 		
 		<!-- Main Container -->
 		<div class="container-fluid" style="margin-top: 22px;">
@@ -48,7 +31,7 @@
 		</div>
 		
 		<!-- Footer -->
-		<ng-include src="'partials/footer.html'"></ng-include>
+		<ng-include src="'app/partials/footer.html'"></ng-include>
 		
 		<!-- JQuery CDN -->
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -61,6 +44,25 @@
 			}
 		});
 		</script>
+		
+		<!-- AngularJS CDN -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		
+		<!-- App Imports -->
+		<script src="app/app.module.js"></script>
+		<script src="app/app.routes.js"></script>
+		<script src="app/controllers/MainController.js"></script>
+		<script src="app/services/CartService.js"></script>
+		<script src="app/services/CategoryService.js"></script>
+		<script src="app/services/ProductService.js"></script>
+		<script src="app/services/FilterService.js"></script>
+		<script src="app/services/PaginationService.js"></script>
+		<script src="app/controllers/PaginationController.js"></script>
+		<script src="app/controllers/ProductFilterController.js"></script>
+		<script src="app/controllers/ProductSortController.js"></script>
+		<script src="app/controllers/ProductPageController.js"></script>
+		<script src="app/controllers/CartPageController.js"></script>
 		
 		<!-- Bootstrap Javascript CDN -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" 

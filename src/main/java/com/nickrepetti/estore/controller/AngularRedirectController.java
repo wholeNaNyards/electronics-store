@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AngularRedirectController {
 
+	public AngularRedirectController() {}
+
 	// Redirect all urls to Angular except for existing REST mappings
 	// and direct resources
 	@RequestMapping(value = "/{[path:[^\\.]*}")

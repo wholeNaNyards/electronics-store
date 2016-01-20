@@ -2,10 +2,10 @@ package com.nickrepetti.estore.dao.jdbc;
 
 import com.nickrepetti.estore.dao.UserRepository;
 
-import com.nickrepetti.estore.dao.jdbc.mapper.ItemRowMapper;
+import com.nickrepetti.estore.dao.jdbc.mapper.ProductRowMapper;
 import com.nickrepetti.estore.dao.jdbc.mapper.UserRowMapper;
 
-import com.nickrepetti.estore.model.Item;
+import com.nickrepetti.estore.model.Product;
 import com.nickrepetti.estore.model.User;
 
 import com.nickrepetti.estore.util.UserNotFoundException;
@@ -22,54 +22,54 @@ public class JdbcUserRepository implements UserRepository {
 
 	private final String GET_BY_ID = 
 		"SELECT u.id, u.firstName, u.lastName, u.userName, "
-		+ "ui.itemId "
+		+ "up.productId "
 		+ "FROM Users u "
-		+ "INNER JOIN UserItems ui "
-		+ "ON u.id = ui.userId "
+		+ "LEFT OUTER JOIN UserProducts up "
+		+ "ON u.id = up.userId "
 		+ "WHERE u.id = ? ";
 
-	private final String GET_USER_ITEMS =
-		"SELECT i.id, i.name, i.description, i.price, "
-		+ "im.id as imageId, im.name as imageName "
-		+ "FROM Items i "
-		+ "INNER JOIN Images im "
-		+ "ON i.imageId = im.id "
-		+ "INNER JOIN UserItems ui "
-		+ "ON ui.itemId = i.id "
-		+ "WHERE ui.userId = ? ";
+	private final String GET_USER_PRODUCTS =
+		"SELECT p.id, p.name, p.description, p.price, "
+		+ "i.id as imageId, i.name as imageName "
+		+ "FROM Products p "
+		+ "INNER JOIN Images i "
+		+ "ON p.imageId = i.id "
+		+ "INNER JOIN UserProducts up "
+		+ "ON up.productId = p.id "
+		+ "WHERE up.userId = ? ";
 
-	private final String GET_USER_ITEMS_COUNT =
+	private final String GET_USER_PRODUCTS_COUNT =
 		"SELECT COUNT(*) "
-		+ "FROM Items i "
-		+ "INNER JOIN UserItems ui "
-		+ "ON ui.itemId = i.id "
-		+ "WHERE ui.userId = ?;";
+		+ "FROM Products p "
+		+ "INNER JOIN UserProducts up "
+		+ "ON up.productId = p.id "
+		+ "WHERE up.userId = ?;";
 		
-	private final String GET_USER_ITEMS_SUBTOTAL =
-		"SELECT SUM(i.price) AS subtotal "
-		+ "FROM Items i "
-		+ "INNER JOIN UserItems ui "
-		+ "ON ui.itemId = i.id "
-		+ "WHERE ui.userId = ?;";
+	private final String GET_USER_PRODUCTS_SUBTOTAL =
+		"SELECT SUM(p.price) AS subtotal "
+		+ "FROM Products p "
+		+ "INNER JOIN UserProducts up "
+		+ "ON up.productId = p.id "
+		+ "WHERE up.userId = ?;";
 		
-	private String SORT_AZ_DESC = "ORDER BY i.name DESC, i.price ";
+	private String SORT_AZ_DESC = "ORDER BY p.name DESC, p.price ";
 	
-	private String SORT_AZ_ASC = "ORDER BY i.name ASC, i.price ";
+	private String SORT_AZ_ASC = "ORDER BY p.name ASC, p.price ";
 	
-	private String SORT_PRICE_DESC = "ORDER BY i.price DESC, i.name ";
+	private String SORT_PRICE_DESC = "ORDER BY p.price DESC, p.name ";
 	
-	private String SORT_PRICE_ASC = "ORDER BY i.price ASC, i.name ";
+	private String SORT_PRICE_ASC = "ORDER BY p.price ASC, p.name ";
 	
 	private String LIMIT_OFFSET = "LIMIT ? OFFSET ?;";
 	
 	private final String ADD_TO_CART = 
-		"INSERT INTO UserItems(userId, itemId) "
+		"INSERT INTO UserProducts(userId, productId) "
 		+ "VALUES(?, ?)";
 		
 	private final String REMOVE_FROM_CART = 
-		"DELETE FROM UserItems ui "
-		+ "WHERE ui.userId = ? "
-		+ "AND ui.itemId = ?;";
+		"DELETE FROM UserProducts up "
+		+ "WHERE up.userId = ? "
+		+ "AND up.productId = ?;";
 	
 	private JdbcTemplate jdbcTemplate;
 
@@ -91,60 +91,60 @@ public class JdbcUserRepository implements UserRepository {
 	}
 
 	@Override
-	public List<Item> getCartItems(Long userId, boolean sortAZ, 
+	public List<Product> getCartProducts(Long userId, boolean sortAZ, 
 								   boolean sortPrice, int limit, int offset) {
 		
-		String query = getSortedQuery(GET_USER_ITEMS, sortAZ, sortPrice);
+		String query = getSortedQuery(GET_USER_PRODUCTS, sortAZ, sortPrice);
 		
-		// Get requested items
-		List<Item> items = jdbcTemplate.query(
+		// Get requested products
+		List<Product> products = jdbcTemplate.query(
 			query, 
-			new ItemRowMapper(),
+			new ProductRowMapper(),
 			userId,
 			limit,
 			offset);
 		
-		if (items.size() == 0) {
+		if (products.size() == 0) {
 			throw new EmptyCartException();
 		}
 		
-		// Get total item count
-		Integer totalItemCount = 
+		// Get total product count
+		Integer totalProductCount = 
 			jdbcTemplate.queryForObject(
-				GET_USER_ITEMS_COUNT, 
+				GET_USER_PRODUCTS_COUNT, 
 				Integer.class, 
 				userId);
 
 		Integer subtotal = 
 				jdbcTemplate.queryForObject(
-					GET_USER_ITEMS_SUBTOTAL, 
+					GET_USER_PRODUCTS_SUBTOTAL, 
 					Integer.class, 
 					userId);
 				
-		// Place total count and subtotal in first item brought back
+		// Place total count and subtotal in first product brought back
 		// TODO: Bring back in Custom Message Converter instead
-		Item firstItem = items.get(0);
+		Product firstProduct = products.get(0);
 		
-		firstItem.setTotalItemCount(totalItemCount);
-		firstItem.setSubtotal(subtotal);
+		firstProduct.setTotalProductCount(totalProductCount);
+		firstProduct.setSubtotal(subtotal);
 		
-		return items;
+		return products;
 	}
 	
 	@Override
-	public void addToCart(Long userId, Long itemId) {
+	public void addToCart(Long userId, Long productId) {
 		jdbcTemplate.update(
 			ADD_TO_CART, 
 			userId,
-			itemId);
+			productId);
 	}
 	
 	@Override
-	public void removeFromCart(Long userId, Long itemId) {
+	public void removeFromCart(Long userId, Long productId) {
 		jdbcTemplate.update(
 			REMOVE_FROM_CART, 
 			userId,
-			itemId);
+			productId);
 	}
 	
 	private String getSortedQuery(String query, boolean sortAZ, boolean sortPrice) {

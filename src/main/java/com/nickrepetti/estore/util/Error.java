@@ -23,11 +23,11 @@ public enum Error {
 	// User with given ID not found
 	USER_NOT_FOUND(6, "The resource that you have requested was not found."),
 	
-	// Requested items were not found
-	ITEM_NOT_FOUND(7, "No items were found matching your request."),
+	// Requested products were not found
+	PRODUCT_NOT_FOUND(7, "No products were found matching your request."),
 
-	// Requested items were not found
-	EMPTY_CART(8, "No items were found in your cart.");
+	// Requested products were not found
+	EMPTY_CART(8, "No products were found in your cart.");
 
 	private final int errorCode;
 	private final String message;

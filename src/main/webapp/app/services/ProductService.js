@@ -3,19 +3,24 @@ var electronicsStore = angular.module('ElectronicsStore');
 electronicsStore.factory('ProductService', 
 	function($http, CartService, PaginationService, productsURL, usersURL) {
 	
+	// Holds all products currently brought back from database (limited by LIMIT)
 	this.allProducts = [];
+	
+	// Count of all products found by database query
 	this.totalNumProducts = 0,
+	
+	// Flag for whether loading Products or User's Cart Items
 	this.loadCart = false;
 	
-	var ITEMS_PER_PAGE = 4;
+	var PRODUCTS_PER_PAGE = 4;
 	var PAGE_RANGE = 5;
 	
-	var LIMIT = ITEMS_PER_PAGE * PAGE_RANGE;
+	var LIMIT = PRODUCTS_PER_PAGE * PAGE_RANGE;
 	
 	var service = {};	
 	
 	service.data = {
-		products: [],
+		products: [], // Currently displayed products on page
 		error: false,
 		errorMsg: ''
 	};
@@ -41,11 +46,12 @@ electronicsStore.factory('ProductService',
 		
 		var me = this;
 		
+		// Load products
 		if (!me.loadCart) {
 			$http.get(productsURL, {params: filter})
 			.success(function (data) {
 				me.allProducts = data;
-				me.totalNumProducts = me.allProducts[0].totalItemCount;
+				me.totalNumProducts = me.allProducts[0].totalProductCount;
 				
 				service.updateProducts();
 				
@@ -60,16 +66,17 @@ electronicsStore.factory('ProductService',
 				service.data.errorMsg = error.message;
 			});
 		}
+		// Load user's cart products
 		else {
 			// Hard code to default user with id = 1
-			$http.get(usersURL + '/1/items', {params: filter})
+			$http.get(usersURL + '/1/products', {params: filter})
 			.success(function (data) {
 				me.allProducts = data;
 				
-				var firstItem = me.allProducts[0];
-				me.totalNumProducts = firstItem.totalItemCount;
+				var firstProduct = me.allProducts[0];
+				me.totalNumProducts = firstProduct.totalProductCount;
 				
-				CartService.setSubtotal(firstItem.subtotal);
+				CartService.setSubtotal(firstProduct.subtotal);
 				service.updateProducts();
 				
 				service.data.error = false;
@@ -100,12 +107,12 @@ electronicsStore.factory('ProductService',
 	service.updateProducts = function() {
 		var products = [];
 		
-		for (var i = 0; i < ITEMS_PER_PAGE && i < this.totalNumProducts; i++) {
+		for (var i = 0; i < PRODUCTS_PER_PAGE && i < this.totalNumProducts; i++) {
 			products.push(this.allProducts[i]);
 		}
 		
 		service.data.products = products;
-	}
+	};
 	
 	return service;
 });

@@ -12,21 +12,21 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @JsonInclude(Include.NON_EMPTY)
-public class Item {
+public class Product {
 	
 	private Long id;
 	private String name;
 	private String description;
 	private BigDecimal price;
 	private int rating;
-	private int totalItemCount;
+	private int totalProductCount;
 	private int subtotal;
 	private Image image;
 	
-	// Item's list of categories that it belongs to
+	// Product's list of categories that it belongs to
 	private Map<Long, Boolean> categories;
 	
-	public Item() {}
+	public Product() {}
 	
 	public Long getId() {
 		return id;
@@ -68,12 +68,12 @@ public class Item {
 		this.rating = rating;
 	}
 		
-	public int getTotalItemCount() {
-		return totalItemCount;
+	public int getTotalProductCount() {
+		return totalProductCount;
 	}
 	
-	public void setTotalItemCount(int totalItemCount) {
-		this.totalItemCount = totalItemCount;
+	public void setTotalProductCount(int totalProductCount) {
+		this.totalProductCount = totalProductCount;
 	}
 	
 	public int getSubtotal() {
@@ -108,6 +108,8 @@ public class Item {
 			.append(description)
 			.append(price)
 			.append(rating)
+			.append(totalProductCount)
+			.append(subtotal)
 			.append(image)
 			.append(categories)
 			.toHashCode();
@@ -115,17 +117,19 @@ public class Item {
 	
 	@Override
 	public boolean equals(final Object object) {
-		if (object instanceof Item) {
-			final Item otherItem = (Item) object;
+		if (object instanceof Product) {
+			final Product otherProduct = (Product) object;
 			
 			return new EqualsBuilder()
-				.append(id, otherItem.getId())
-				.append(name, otherItem.getName())
-				.append(description, otherItem.getDescription())
-				.append(price, otherItem.getPrice())
-				.append(rating, otherItem.getRating())
-				.append(image, otherItem.getImage())
-				.append(categories, otherItem.getCategories())
+				.append(id, otherProduct.getId())
+				.append(name, otherProduct.getName())
+				.append(description, otherProduct.getDescription())
+				.append(price, otherProduct.getPrice())
+				.append(rating, otherProduct.getRating())
+				.append(totalProductCount, otherProduct.getTotalProductCount())
+				.append(subtotal, otherProduct.getSubtotal())
+				.append(image, otherProduct.getImage())
+				.append(categories, otherProduct.getCategories())
 				.isEquals();
 		}
 		else {

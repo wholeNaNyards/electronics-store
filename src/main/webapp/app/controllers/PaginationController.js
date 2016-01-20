@@ -7,7 +7,7 @@ electronicsStore.controller('PaginationController',
 	
 	$scope.changePage = function(page) {
 		var allProducts = ProductService.getAllProducts();
-		var products = PaginationService.getPageOfItems(allProducts, page);
+		var products = PaginationService.getPageOfProducts(allProducts, page);
 		
 		ProductService.setProducts(products);
 		PaginationService.setCurrentPage(page);

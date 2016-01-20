@@ -16,7 +16,7 @@ public class User {
 	private String lastName;
 	private String userName;
 	
-	// User's cart maps itemId to quantity
+	// User's cart maps productId to quantity
 	private Map<Long, Integer> cart;
 	
 	public User() {}

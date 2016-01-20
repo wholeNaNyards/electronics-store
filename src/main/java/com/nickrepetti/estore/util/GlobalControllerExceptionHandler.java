@@ -1,7 +1,7 @@
 package com.nickrepetti.estore.util;
 
 import com.nickrepetti.estore.util.Error;
-import com.nickrepetti.estore.util.ItemNotFoundException;
+import com.nickrepetti.estore.util.ProductNotFoundException;
 import com.nickrepetti.estore.util.UserNotFoundException;
 
 import org.springframework.beans.TypeMismatchException;
@@ -24,10 +24,10 @@ public class GlobalControllerExceptionHandler {
 		return Error.USER_NOT_FOUND;
 	}
 	
-	@ExceptionHandler(ItemNotFoundException.class)
+	@ExceptionHandler(ProductNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public Error itemNotFound(ItemNotFoundException e) {
-		return Error.ITEM_NOT_FOUND;
+	public Error productNotFound(ProductNotFoundException e) {
+		return Error.PRODUCT_NOT_FOUND;
 	}
 	
 	@ExceptionHandler(EmptyCartException.class)

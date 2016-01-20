@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS Items;
-DROP TABLE IF EXISTS UserItems;
+DROP TABLE IF EXISTS Products;
+DROP TABLE IF EXISTS UserProducts;
 DROP TABLE IF EXISTS Categories;
-DROP TABLE IF EXISTS ItemCategories;
+DROP TABLE IF EXISTS ProductCategories;
 DROP TABLE IF EXISTS Images;
 
 CREATE TABLE Users (
@@ -17,7 +17,7 @@ CREATE TABLE Images (
 	name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE Items (
+CREATE TABLE Products (
 	id IDENTITY,
 	name VARCHAR(30) NOT NULL,
 	description VARCHAR(2000) NOT NULL,
@@ -27,12 +27,12 @@ CREATE TABLE Items (
 	FOREIGN KEY (imageId) REFERENCES Images(id)
 );
 
-CREATE TABLE UserItems (
+CREATE TABLE UserProducts (
 	userId INTEGER NOT NULL,
-	itemId INTEGER NOT NULL,
+	productId INTEGER NOT NULL,
 	FOREIGN KEY (userId) REFERENCES Users(id),
-	FOREIGN KEY (itemId) REFERENCES Items(id),
-	PRIMARY KEY (userId, itemId)
+	FOREIGN KEY (productId) REFERENCES Products(id),
+	PRIMARY KEY (userId, productId)
 );
 
 CREATE TABLE Categories (
@@ -40,10 +40,10 @@ CREATE TABLE Categories (
 	name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE ItemCategories (
-	itemId INTEGER NOT NULL,
+CREATE TABLE ProductCategories (
+	productId INTEGER NOT NULL,
 	categoryId INTEGER NOT NULL,
-	FOREIGN KEY (itemId) REFERENCES Items(id),
+	FOREIGN KEY (productId) REFERENCES Products(id),
 	FOREIGN KEY (categoryId) REFERENCES Categories(id),
-	PRIMARY KEY (itemId, categoryId)
+	PRIMARY KEY (productId, categoryId)
 );
