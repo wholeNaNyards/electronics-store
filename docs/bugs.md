@@ -1,5 +1,4 @@
 #Bugs
-<hr>
 
 * Accuracy of backend subtotal to frontend subtotal for Cart Page
     * Especially noticeable when removing products from a User’s cart on Cart Page

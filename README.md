@@ -1,5 +1,4 @@
 #Electronics Store
-<hr>
 
 This web app is a fake online store where users can view, rate, and purchase various electronics. I created it to help me learn and practice Spring and AngularJS. It is made with AngularJS, Bootstrap, Spring REST, Spring JDBC, and Gradle. With help from some gradle plugins, it runs on an embedded Jetty server and uses an embedded H2 SQL Database. If you don't want to download it, you can always view the code and screenshots (see link at bottom) here on GitHub.
 

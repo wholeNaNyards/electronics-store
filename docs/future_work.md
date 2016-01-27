@@ -1,5 +1,4 @@
 #Future Work
-<hr>
 
 * Error handling for `loadCart()` in CartService.js
 * Error handling for `addToCart()` in CartService.js

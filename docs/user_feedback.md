@@ -1,5 +1,4 @@
 #User Feedback
-<hr>
 
 * Have uniformity between Cart page links
     * All pages have a cart button in top right
